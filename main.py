@@ -5,15 +5,13 @@ import sys
 from aiogram import Bot, Dispatcher, enums
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from handlers.start import register_start
+from handlers.commands import register_start
 import glv
 from utils import cfg_claim
 
-glv.token, = cfg_claim()
+glv.config = cfg_claim()
 
-print(glv.token)
-
-glv.bot = Bot(glv.token, parse_mode=enums.ParseMode.HTML)
+glv.bot = Bot(glv.config['BOT_TOKEN'], parse_mode=enums.ParseMode.HTML)
 glv.storage = MemoryStorage()
 glv.dp = Dispatcher(storage=glv.storage)
 logging.basicConfig(level=logging.INFO)

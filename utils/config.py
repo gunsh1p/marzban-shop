@@ -1,12 +1,13 @@
 import os
 
 PARAMS = [
-    'TOKEN'
+    'TOKEN',
+    'NAME'
 ]
 
 def claim() -> list:
-    config = []
+    config = {}
     for param in PARAMS:
         value = os.environ.get(param)
-        config.append(value)
-    return value
+        config[param] = value
+    return config
