@@ -1,0 +1,1 @@
+from .config import claim as cfg_claim
