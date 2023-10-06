@@ -1,1 +1,2 @@
-from .menu import get_menu_keyboard
+from .main_menu import get_main_menu_keyboard
+from .buy_menu import get_buy_menu_keyboard

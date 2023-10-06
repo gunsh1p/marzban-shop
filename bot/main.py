@@ -6,6 +6,7 @@ from aiogram import Bot, Dispatcher, enums
 from aiogram.fsm.storage.memory import MemoryStorage
 
 from handlers.commands import register_commands
+from handlers.messages import register_messages
 import glv
 
 glv.bot = Bot(glv.config['BOT_TOKEN'], parse_mode=enums.ParseMode.HTML)
@@ -15,6 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 def setup_routers():
     register_commands(glv.dp)
+    register_messages(glv.dp)
 
 def main():
     setup_routers()

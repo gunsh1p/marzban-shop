@@ -1,6 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-def get_menu_keyboard() -> ReplyKeyboardMarkup:
+def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
     kb = [
         [
             KeyboardButton(text="🛍️Buy"),
