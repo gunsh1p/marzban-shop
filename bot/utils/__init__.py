@@ -1,1 +1,1 @@
-from .config import claim as cfg_claim
+from . import goods as goods

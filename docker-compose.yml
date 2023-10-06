@@ -9,6 +9,8 @@ services:
             KASSA_TOKEN: ${KASSA_TOKEN}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             DB_URL: ${DB_URL}
+        volumes:
+            - "./goods.json:/app/goods.json"
         depends_on:
             - db
     db:
