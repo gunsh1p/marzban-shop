@@ -1,0 +1,40 @@
+# English translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-10-06 21:19+0300\n"
+"PO-Revision-Date: 2023-10-06 21:39+0300\n"
+"Last-Translator: \n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.12.1\n"
+"X-Generator: Poedit 3.4\n"
+
+#: bot/handlers/commands.py:16
+msgid ""
+"Hello, {name}.\n"
+"\n"
+"🎉Welcome to {title}\n"
+"\n"
+"⬇️Select an action"
+msgstr ""
+
+#: bot/handlers/messages.py:14
+msgid "Read the rules before buying"
+msgstr ""
+
+#: bot/handlers/messages.py:15
+msgid "⬇️Tariffs"
+msgstr ""
+
+msgid "🛍️Buy"
+msgstr ""

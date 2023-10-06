@@ -11,6 +11,7 @@ services:
             DB_URL: ${DB_URL}
         volumes:
             - "./goods.json:/app/goods.json"
+            - "./locales:/app/locales"
         depends_on:
             - db
     db:
