@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+    bot:
+        build: .
+        restart: always
+        stop_signal: SIGINT
+        environment:
+            BOT_TOKEN: ${BOT_TOKEN}
+            KASSA_TOKEN: ${KASSA_TOKEN}
+            CRYPTO_TOKEN: ${CRYPTO_TOKEN}
+            DB_URL: ${DB_URL}
+        depends_on:
+            - db
+    db:
+        image: postgres:12-alpine
+        restart: always
+        environment:
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASS}
+            POSTGRES_DB: ${DB_NAME}
+        volumes:
+            - "./data/db:/var/lib/postgresql/data"
