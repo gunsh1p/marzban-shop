@@ -20,13 +20,3 @@ services:
             POSTGRES_DB: ${DB_NAME}
         volumes:
             - "./data/db:/var/lib/postgresql/data"
-    pgadmin:
-        image: dpage/pgadmin4
-        restart: always
-        environment:
-            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_USER}
-            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
-        ports:
-            - "5050:80"
-        volumes:
-            - "./data/pgadmin:/var/lib/pgadmin"

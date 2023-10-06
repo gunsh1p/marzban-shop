@@ -3,15 +3,15 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 def get_menu_keyboard() -> ReplyKeyboardMarkup:
     kb = [
         [
-            KeyboardButton("🛍️Buy"),
+            KeyboardButton(text="🛍️Buy"),
         ],
         [
-            KeyboardButton("👤Profile"),
-            KeyboardButton("ℹ️Information")
+            KeyboardButton(text="👤Profile"),
+            KeyboardButton(text="ℹ️Information")
         ],
         [
-            KeyboardButton("☎️Support")
+            KeyboardButton(text="☎️Support")
         ]
     ]
     
-    return ReplyKeyboardMarkup(kb)
+    return ReplyKeyboardMarkup(keyboard=kb)
