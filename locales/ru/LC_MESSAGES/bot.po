@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-07 20:41+0300\n"
-"PO-Revision-Date: 2023-10-07 20:42+0300\n"
+"POT-Creation-Date: 2023-10-07 21:46+0300\n"
+"PO-Revision-Date: 2023-10-07 21:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
@@ -20,19 +20,19 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
-#: bot/handlers/callbacks.py:18
-msgid "Select a payment method"
-msgstr "Выберите способ оплаты"
-
-#: bot/handlers/callbacks.py:32
+#: bot/handlers/callbacks.py:25
 msgid "VPN Subscription"
 msgstr "Подписка на VPN"
 
-#: bot/handlers/callbacks.py:33
+#: bot/handlers/callbacks.py:26
 msgid "Tariff - {title}"
 msgstr "Тариф - {title}"
 
-#: bot/handlers/commands.py:16
+#: bot/handlers/callbacks.py:55
+msgid "Select a payment method"
+msgstr "Выберите метод оплаты"
+
+#: bot/handlers/commands.py:17
 msgid ""
 "Hello, {name}.\n"
 "\n"
@@ -46,18 +46,21 @@ msgstr ""
 "\n"
 "⬇️Выберите действие"
 
-#: bot/handlers/messages.py:14
+#: bot/handlers/messages.py:16
 msgid "Read the rules before buying"
 msgstr "Прочитайте правила перед покупкой"
 
-#: bot/handlers/messages.py:15
+#: bot/handlers/messages.py:17
 msgid "⬇️Tariffs"
 msgstr "⬇️Тарифы"
 
+#: bot/keyboards/back.py:7
+msgid "🔙Back"
+msgstr "🔙Назад"
+
 #: bot/keyboards/buy_menu.py:11
-#, fuzzy
 msgid "{title} - {price_en}$/{price_ru}rub"
-msgstr "{title} - {price_en}$/{price_ru}руб."
+msgstr "{title} - {price_en}$/{price_ru}руб"
 
 #: bot/keyboards/main_menu.py:7
 msgid "🛍️Buy"
@@ -77,4 +80,4 @@ msgstr "☎️Поддержка"
 
 #: bot/keyboards/payments.py:9
 msgid "ЮKassa - {price}rub"
-msgstr "ЮКасса - {price}руб"
+msgstr "ЮKassa - {price}руб"

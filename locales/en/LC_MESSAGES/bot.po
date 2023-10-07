@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-07 20:41+0300\n"
-"PO-Revision-Date: 2023-10-07 20:43+0300\n"
+"POT-Creation-Date: 2023-10-07 21:46+0300\n"
+"PO-Revision-Date: 2023-10-07 21:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
-#: bot/handlers/callbacks.py:18
-msgid "Select a payment method"
-msgstr ""
-
-#: bot/handlers/callbacks.py:32
+#: bot/handlers/callbacks.py:25
 msgid "VPN Subscription"
 msgstr ""
 
-#: bot/handlers/callbacks.py:33
+#: bot/handlers/callbacks.py:26
 msgid "Tariff - {title}"
 msgstr ""
 
-#: bot/handlers/commands.py:16
+#: bot/handlers/callbacks.py:55
+msgid "Select a payment method"
+msgstr ""
+
+#: bot/handlers/commands.py:17
 msgid ""
 "Hello, {name}.\n"
 "\n"
@@ -40,12 +40,16 @@ msgid ""
 "⬇️Select an action"
 msgstr ""
 
-#: bot/handlers/messages.py:14
+#: bot/handlers/messages.py:16
 msgid "Read the rules before buying"
 msgstr ""
 
-#: bot/handlers/messages.py:15
+#: bot/handlers/messages.py:17
 msgid "⬇️Tariffs"
+msgstr ""
+
+#: bot/keyboards/back.py:7
+msgid "🔙Back"
 msgstr ""
 
 #: bot/keyboards/buy_menu.py:11
