@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-06 21:19+0300\n"
-"PO-Revision-Date: 2023-10-06 21:39+0300\n"
+"POT-Creation-Date: 2023-10-07 17:32+0300\n"
+"PO-Revision-Date: 2023-10-07 17:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -36,5 +36,18 @@ msgstr ""
 msgid "⬇️Tariffs"
 msgstr ""
 
+#: bot/keyboards/main_menu.py:7
 msgid "🛍️Buy"
+msgstr ""
+
+#: bot/keyboards/main_menu.py:10
+msgid "👤Profile"
+msgstr ""
+
+#: bot/keyboards/main_menu.py:11
+msgid "ℹ️Information"
+msgstr ""
+
+#: bot/keyboards/main_menu.py:14
+msgid "☎️Support"
 msgstr ""
