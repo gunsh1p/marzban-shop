@@ -2,9 +2,10 @@
     {
         "title": "Simple VPN",
         "price": {
-            "ru": 150,
-            "en": 2
+            "en": 1,
+            "ru": 100
         },
+        "image": "https://cdn-icons-png.flaticon.com/512/6554/6554321.png",
         "callback": "simple_vpn"
     }
 ]
