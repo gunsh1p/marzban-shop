@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-07 17:40+0300\n"
-"PO-Revision-Date: 2023-10-07 17:42+0300\n"
+"POT-Creation-Date: 2023-10-07 20:41+0300\n"
+"PO-Revision-Date: 2023-10-07 20:43+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -18,6 +18,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
+
+#: bot/handlers/callbacks.py:18
+msgid "Select a payment method"
+msgstr ""
+
+#: bot/handlers/callbacks.py:32
+msgid "VPN Subscription"
+msgstr ""
+
+#: bot/handlers/callbacks.py:33
+msgid "Tariff - {title}"
+msgstr ""
 
 #: bot/handlers/commands.py:16
 msgid ""
@@ -37,7 +49,7 @@ msgid "⬇️Tariffs"
 msgstr ""
 
 #: bot/keyboards/buy_menu.py:11
-msgid "{title} - {price_en}$/{price_ru}rub."
+msgid "{title} - {price_en}$/{price_ru}rub"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:7
@@ -54,4 +66,8 @@ msgstr ""
 
 #: bot/keyboards/main_menu.py:14
 msgid "☎️Support"
+msgstr ""
+
+#: bot/keyboards/payments.py:9
+msgid "ЮKassa - {price}rub"
 msgstr ""

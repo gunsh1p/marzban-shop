@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-07 17:40+0300\n"
-"PO-Revision-Date: 2023-10-07 17:42+0300\n"
+"POT-Creation-Date: 2023-10-07 20:41+0300\n"
+"PO-Revision-Date: 2023-10-07 20:42+0300\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
@@ -19,6 +19,18 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
+
+#: bot/handlers/callbacks.py:18
+msgid "Select a payment method"
+msgstr "Выберите способ оплаты"
+
+#: bot/handlers/callbacks.py:32
+msgid "VPN Subscription"
+msgstr "Подписка на VPN"
+
+#: bot/handlers/callbacks.py:33
+msgid "Tariff - {title}"
+msgstr "Тариф - {title}"
 
 #: bot/handlers/commands.py:16
 msgid ""
@@ -43,7 +55,8 @@ msgid "⬇️Tariffs"
 msgstr "⬇️Тарифы"
 
 #: bot/keyboards/buy_menu.py:11
-msgid "{title} - {price_en}$/{price_ru}rub."
+#, fuzzy
+msgid "{title} - {price_en}$/{price_ru}rub"
 msgstr "{title} - {price_en}$/{price_ru}руб."
 
 #: bot/keyboards/main_menu.py:7
@@ -61,3 +74,7 @@ msgstr "ℹ️Информация"
 #: bot/keyboards/main_menu.py:14
 msgid "☎️Support"
 msgstr "☎️Поддержка"
+
+#: bot/keyboards/payments.py:9
+msgid "ЮKassa - {price}rub"
+msgstr "ЮКасса - {price}руб"

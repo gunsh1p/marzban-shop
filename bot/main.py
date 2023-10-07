@@ -9,6 +9,7 @@ from aiogram.utils.i18n import I18n, SimpleI18nMiddleware
 
 from handlers.commands import register_commands
 from handlers.messages import register_messages
+from handlers.callbacks import register_callbacks
 import glv
 
 glv.bot = Bot(glv.config['BOT_TOKEN'], parse_mode=enums.ParseMode.HTML)
@@ -19,6 +20,7 @@ logging.basicConfig(level=logging.INFO)
 def setup_routers():
     register_commands(glv.dp)
     register_messages(glv.dp)
+    register_callbacks(glv.dp)
 
 def setup_middlewares():
     i18n = I18n(path=Path(__file__).parent / 'locales', default_locale='en', domain='bot')
