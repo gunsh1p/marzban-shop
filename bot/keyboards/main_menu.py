@@ -15,4 +15,4 @@ def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
         ]
     ]
     
-    return ReplyKeyboardMarkup(keyboard=kb)
+    return ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
