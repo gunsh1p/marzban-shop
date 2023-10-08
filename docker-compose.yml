@@ -6,9 +6,13 @@ services:
         stop_signal: SIGINT
         environment:
             BOT_TOKEN: ${BOT_TOKEN}
+            SHOP_NAME: ${SHOP_NAME}
             KASSA_TOKEN: ${KASSA_TOKEN}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             DB_URL: ${DB_URL}
+            PANEL_HOST: ${PANEL_HOST}
+            PANEL_USER: ${PANEL_USER}
+            PANEL_PASS: ${PANEL_PASS}
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"

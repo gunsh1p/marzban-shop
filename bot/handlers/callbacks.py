@@ -35,7 +35,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
                             is_flexible=False,
                             prices=[PRICE],
                             start_parameter="one-month-subscription",
-                            payload="just_payload")
+                            payload=good['callback'])
     await callback.answer()
 
 @router.callback_query(F.data.startswith("pay_crypto_"))

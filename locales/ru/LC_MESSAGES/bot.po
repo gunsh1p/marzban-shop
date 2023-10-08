@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-07 21:46+0300\n"
-"PO-Revision-Date: 2023-10-07 21:48+0300\n"
+"POT-Creation-Date: 2023-10-08 13:40+0300\n"
+"PO-Revision-Date: 2023-10-08 13:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
@@ -32,7 +32,7 @@ msgstr "Тариф - {title}"
 msgid "Select a payment method"
 msgstr "Выберите метод оплаты"
 
-#: bot/handlers/commands.py:17
+#: bot/handlers/commands.py:27
 msgid ""
 "Hello, {name}.\n"
 "\n"
@@ -46,13 +46,21 @@ msgstr ""
 "\n"
 "⬇️Выберите действие"
 
-#: bot/handlers/messages.py:16
+#: bot/handlers/messages.py:18
 msgid "Read the rules before buying"
 msgstr "Прочитайте правила перед покупкой"
 
-#: bot/handlers/messages.py:17
+#: bot/handlers/messages.py:19
 msgid "⬇️Tariffs"
 msgstr "⬇️Тарифы"
+
+#: bot/handlers/messages.py:35
+msgid ""
+"Thank you for your purchase. For instructions on how to connect, please "
+"follow this <a href=\"{link}\">link</a>"
+msgstr ""
+"Спасибо за покупку. Для получения инструкций по подключению, "
+"пожалуйста, перейдите по этой <a href=\"{link}\">ссылке</a>"
 
 #: bot/keyboards/back.py:7
 msgid "🔙Back"
