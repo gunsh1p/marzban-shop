@@ -26,7 +26,7 @@ async def start(message: Message, session: AsyncSession):
     await session.commit()
     text = _("Hello, {name}.\n\n🎉Welcome to {title}\n\n⬇️Select an action").format(
         name=message.from_user.first_name,
-        title=glv.config.get('NAME', 'VPN Shop')
+        title=glv.config.get('SHOP_NAME', 'VPN Shop')
     )
     await message.answer(text, reply_markup=get_main_menu_keyboard())
 
