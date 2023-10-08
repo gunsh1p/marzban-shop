@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-08 13:40+0300\n"
-"PO-Revision-Date: 2023-10-08 13:43+0300\n"
+"POT-Creation-Date: 2023-10-08 21:16+0300\n"
+"PO-Revision-Date: 2023-10-08 21:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -40,18 +40,28 @@ msgid ""
 "⬇️Select an action"
 msgstr ""
 
-#: bot/handlers/messages.py:18
-msgid "Read the rules before buying"
+#: bot/handlers/messages.py:25
+msgid "Read the <a href=\"{rules}\">rules</a> before buying"
 msgstr ""
 
-#: bot/handlers/messages.py:19
+#: bot/handlers/messages.py:29
 msgid "⬇️Tariffs"
 msgstr ""
 
-#: bot/handlers/messages.py:35
+#: bot/handlers/messages.py:38
+msgid "You haven't the VPN profile. Just buy the subscription to join out family"
+msgstr ""
+
+#: bot/handlers/messages.py:40
 msgid ""
-"Thank you for your purchase. For instructions on how to connect, please "
-"follow this <a href=\"{link}\">link</a>"
+"You can find out more about your subscription by following this <a href="
+"\"{link}\">link</a>"
+msgstr ""
+
+#: bot/handlers/messages.py:86
+msgid ""
+"Thank you for your purchase. For instructions on how to connect, please follow "
+"this <a href=\"{link}\">link</a>"
 msgstr ""
 
 #: bot/keyboards/back.py:7

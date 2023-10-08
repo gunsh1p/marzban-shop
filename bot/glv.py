@@ -5,6 +5,8 @@ from aiogram import Bot, Dispatcher
 config = {
     'BOT_TOKEN': os.environ.get('BOT_TOKEN'),
     'SHOP_NAME': os.environ.get('SHOP_NAME'),
+    'ABOUT': os.environ.get('ABOUT'),
+    'RULES_LINK': os.environ.get('RULES_LINK'),
     'DB_URL': os.environ.get('DB_URL'),
     'KASSA_TOKEN': os.environ.get('KASSA_TOKEN'),
     'CRYPTO_TOKEN': os.environ.get('CRYPTO_TOKEN'),

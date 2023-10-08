@@ -21,8 +21,30 @@ router = Router(name="messages-router")
 
 @router.message(F.text == __("🛍️Buy"))
 async def buy(message: Message):
-    await message.answer(_("Read the rules before buying"), reply_markup=get_back_keyboard())
+    await message.answer(
+        _("Read the <a href=\"{rules}\">rules</a> before buying").format(
+            rules=glv.config['RULES_LINK']), 
+        reply_markup=get_back_keyboard()
+    )
     await message.answer(_("⬇️Tariffs"), reply_markup=get_buy_menu_keyboard())
+
+@router.message(F.text == __("👤Profile"))
+async def profile(message: Message, session: AsyncSession):
+    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
+    mytoken = panel.get_token()
+    sql_query = select(VPNUsers).where(VPNUsers.tg_id == message.from_user.id)
+    result = (await session.execute(sql_query)).fetchone()[0]
+    if not marzban_api.check_if_exists(result.vpn_id, panel):
+        await message.answer(_("You haven't the VPN profile. Just buy the subscription to join out family"), reply_markup=get_main_menu_keyboard())
+        return
+    user = panel.get_user(result.vpn_id, mytoken)
+    await message.answer(_("You can find out more about your subscription by following this <a href=\"{link}\">link</a>").format(
+                        link=glv.config['PANEL_HOST'] + user.subscription_url), 
+                        reply_markup=get_back_keyboard())
+
+@router.message(F.text == __("ℹ️Information"))
+async def information(message: Message):
+    await message.answer(text=glv.config['ABOUT'],reply_markup=get_back_keyboard())
     
 @router.message(F.text == __("🔙Back"))
 async def start_text(message: Message, session: AsyncSession):
@@ -67,6 +89,7 @@ async def successful_payment(message: Message, session: AsyncSession):
                            ),
                            reply_markup=get_main_menu_keyboard()
                         )
+    await start(message, session)
 
 def register_messages(dp: Dispatcher):
     dp.include_router(router)
