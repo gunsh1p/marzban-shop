@@ -11,6 +11,7 @@ config = {
     'KASSA_TOKEN': os.environ.get('KASSA_TOKEN'),
     'CRYPTO_TOKEN': os.environ.get('CRYPTO_TOKEN'),
     'PANEL_HOST': os.environ.get('PANEL_HOST'),
+    'PANEL_GLOBAL': os.environ.get('PANEL_GLOBAL'),
     'PANEL_USER': os.environ.get('PANEL_USER'),
     'PANEL_PASS': os.environ.get('PANEL_PASS'),
 }
