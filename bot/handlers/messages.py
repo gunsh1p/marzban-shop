@@ -4,6 +4,7 @@ from aiogram.types import Message, PreCheckoutQuery
 from aiogram.enums.content_type import ContentType
 from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from .commands import start
 from keyboards import get_buy_menu_keyboard, get_back_keyboard
@@ -17,8 +18,8 @@ async def buy(message: Message):
     await message.answer(_("⬇️Tariffs"), reply_markup=get_buy_menu_keyboard())
     
 @router.message(F.text == __("🔙Back"))
-async def start_text(message: Message):
-    await start(message)
+async def start_text(message: Message, session: AsyncSession):
+    await start(message, session)
 
 @router.pre_checkout_query(lambda query: True)
 async def pre_checkout_query(pre_checkout_q: PreCheckoutQuery):
