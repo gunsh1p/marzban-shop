@@ -39,7 +39,7 @@ async def profile(message: Message, session: AsyncSession):
         return
     user = panel.get_user(result.vpn_id, mytoken)
     await message.answer(_("You can find out more about your subscription by following this <a href=\"{link}\">link</a>").format(
-                        link=glv.config['PANEL_HOST'] + user.subscription_url), 
+                        link=glv.config['PANEL_GLOBAL'] + user.subscription_url), 
                         reply_markup=get_back_keyboard())
 
 @router.message(F.text == __("ℹ️Information"))
@@ -85,7 +85,7 @@ async def successful_payment(message: Message, session: AsyncSession):
         result = panel.add_user(user=user, token=mytoken)
     await glv.bot.send_message(message.chat.id,
                            _("Thank you for your purchase. For instructions on how to connect, please follow this <a href=\"{link}\">link</a>").format(
-                               link=glv.config['PANEL_HOST'] + result.subscription_url
+                               link=glv.config['PANEL_GLOBAL'] + result.subscription_url
                            ),
                            reply_markup=get_main_menu_keyboard()
                         )
