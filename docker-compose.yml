@@ -4,6 +4,7 @@ services:
         build: .
         restart: always
         stop_signal: SIGINT
+        network_mode: host
         environment:
             BOT_TOKEN: ${BOT_TOKEN}
             SHOP_NAME: ${SHOP_NAME}
@@ -27,5 +28,7 @@ services:
             POSTGRES_USER: ${DB_USER}
             POSTGRES_PASSWORD: ${DB_PASS}
             POSTGRES_DB: ${DB_NAME}
+        ports:
+            - "5432:5432"
         volumes:
             - "./data/db:/var/lib/postgresql/data"
