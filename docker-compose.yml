@@ -14,6 +14,7 @@ services:
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             DB_URL: ${DB_URL}
             PANEL_HOST: ${PANEL_HOST}
+            PANEL_GLOBAL: ${PANEL_GLOBAL}
             PANEL_USER: ${PANEL_USER}
             PANEL_PASS: ${PANEL_PASS}
         volumes:
