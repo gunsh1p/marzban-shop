@@ -11,7 +11,7 @@ def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
             KeyboardButton(text=_("ℹ️Information"))
         ],
         [
-            KeyboardButton(text=_("☎️Support"))
+            KeyboardButton(text=_("Support"))
         ]
     ]
     

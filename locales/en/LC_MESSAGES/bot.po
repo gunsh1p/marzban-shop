@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-09 16:36+0300\n"
-"PO-Revision-Date: 2023-10-09 16:37+0300\n"
+"POT-Creation-Date: 2023-10-09 17:27+0300\n"
+"PO-Revision-Date: 2023-10-09 17:30+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -89,7 +89,7 @@ msgid "ℹ️Information"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:14
-msgid "☎️Support"
+msgid "Support"
 msgstr ""
 
 #: bot/keyboards/payments.py:9
