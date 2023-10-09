@@ -10,6 +10,7 @@ services:
             SHOP_NAME: ${SHOP_NAME}
             ABOUT: ${ABOUT}
             RULES_LINK: ${RULES_LINK}
+            SUPPORT_LINK: ${SUPPORT_LINK}
             KASSA_TOKEN: ${KASSA_TOKEN}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             DB_URL: ${DB_URL}
