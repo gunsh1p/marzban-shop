@@ -14,6 +14,7 @@ from handlers.messages import register_messages
 from handlers.callbacks import register_callbacks
 from middlewares import DbSessionMiddleware
 from db.base import Base
+from services import listen_to_payments
 import glv
 
 glv.bot = Bot(glv.config['BOT_TOKEN'], parse_mode=enums.ParseMode.HTML)
@@ -47,6 +48,7 @@ def main():
     setup_middlewares()
     setup_database()
     
+    asyncio.create_task(listen_to_payments())
     asyncio.run(glv.dp.start_polling(glv.bot))
 
 if __name__ == "__main__":

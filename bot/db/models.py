@@ -16,4 +16,5 @@ class CPayments(Base):
     tg_id = Column(BigInteger)
     payment_uuid = Column(String(64))
     order_id = Column(String(64))
-    
+    chat_id = Column(BigInteger)
+    callback = Column(String(64))
