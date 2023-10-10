@@ -13,6 +13,7 @@ services:
             SUPPORT_LINK: ${SUPPORT_LINK}
             KASSA_TOKEN: ${KASSA_TOKEN}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
+            MERCHANT_UUID: ${MERCHANT_UUID}
             DB_URL: ${DB_URL}
             PANEL_HOST: ${PANEL_HOST}
             PANEL_GLOBAL: ${PANEL_GLOBAL}

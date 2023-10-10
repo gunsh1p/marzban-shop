@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-09 16:36+0300\n"
-"PO-Revision-Date: 2023-10-09 16:37+0300\n"
+"POT-Creation-Date: 2023-10-11 00:05+0300\n"
+"PO-Revision-Date: 2023-10-11 00:07+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -19,15 +19,22 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
-#: bot/handlers/callbacks.py:25
+#: bot/handlers/callbacks.py:29
 msgid "VPN Subscription"
 msgstr ""
 
-#: bot/handlers/callbacks.py:26
+#: bot/handlers/callbacks.py:30
 msgid "Tariff - {title}"
 msgstr ""
 
-#: bot/handlers/callbacks.py:55
+#: bot/handlers/callbacks.py:56
+msgid ""
+"An invoice has been issued in the amount of {amount}$. Pay it by {date}. After "
+"payment, wait until the payment is approved and you receive a confirmation "
+"message"
+msgstr ""
+
+#: bot/handlers/callbacks.py:67
 msgid "Select a payment method"
 msgstr ""
 
@@ -74,6 +81,10 @@ msgstr ""
 
 #: bot/keyboards/buy_menu.py:11
 msgid "{title} - {price_en}$/{price_ru}rub"
+msgstr ""
+
+#: bot/keyboards/crypto_buy.py:9
+msgid "Pay"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:7

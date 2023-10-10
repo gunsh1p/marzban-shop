@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-09 16:36+0300\n"
-"PO-Revision-Date: 2023-10-09 16:38+0300\n"
+"POT-Creation-Date: 2023-10-11 00:05+0300\n"
+"PO-Revision-Date: 2023-10-11 00:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
@@ -20,17 +20,26 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
-#: bot/handlers/callbacks.py:25
+#: bot/handlers/callbacks.py:29
 msgid "VPN Subscription"
 msgstr "Подписка на VPN"
 
-#: bot/handlers/callbacks.py:26
+#: bot/handlers/callbacks.py:30
 msgid "Tariff - {title}"
 msgstr "Тариф - {title}"
 
-#: bot/handlers/callbacks.py:55
+#: bot/handlers/callbacks.py:56
+msgid ""
+"An invoice has been issued in the amount of {amount}$. Pay it by {date}. After "
+"payment, wait until the payment is approved and you receive a confirmation "
+"message"
+msgstr ""
+"Выставлен счёт на сумму {amount}$. Оплатите его до {date}. После оплаты "
+"подождите, пока платёж будет одобрен и вам придёт сообщение с подтверждением"
+
+#: bot/handlers/callbacks.py:67
 msgid "Select a payment method"
-msgstr "Выберите метод оплаты"
+msgstr "Выберите способ оплаты"
 
 #: bot/handlers/commands.py:27
 msgid ""
@@ -68,15 +77,15 @@ msgstr ""
 
 #: bot/handlers/messages.py:52
 msgid "Follow the <a href=\"{link}\">link</a> for help"
-msgstr "Перейдите по <a href=\"{link}\">ссылке</a> для получения помощи"
+msgstr "Перейдите по <a href=\"{link}\">ссылке</a> для помощи"
 
 #: bot/handlers/messages.py:94
 msgid ""
 "Thank you for your purchase. For instructions on how to connect, please follow "
 "this <a href=\"{link}\">link</a>"
 msgstr ""
-"Спасибо за покупку. Для получения инструкций по подключению, пожалуйста, "
-"перейдите по этой <a href=\"{link}\">ссылке</a>"
+"Благодарим Вас за покупку. Для получения инструкций по подключению, "
+"пожалуйста, перейдите по этой <a href=\"{link}\">ссылке</a>"
 
 #: bot/keyboards/back.py:7
 msgid "🔙Back"
@@ -85,6 +94,10 @@ msgstr "🔙Назад"
 #: bot/keyboards/buy_menu.py:11
 msgid "{title} - {price_en}$/{price_ru}rub"
 msgstr "{title} - {price_en}$/{price_ru}руб"
+
+#: bot/keyboards/crypto_buy.py:9
+msgid "Pay"
+msgstr "Оплатить"
 
 #: bot/keyboards/main_menu.py:7
 msgid "🛍️Buy"
@@ -104,4 +117,4 @@ msgstr "☎️Поддержка"
 
 #: bot/keyboards/payments.py:9
 msgid "ЮKassa - {price}rub"
-msgstr "ЮKassa - {price}руб"
+msgstr ""
