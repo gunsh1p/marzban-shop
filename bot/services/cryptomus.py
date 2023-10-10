@@ -34,5 +34,5 @@ async def create_payment(tg_id: int, callback: str) -> dict:
     await engine.dispose()
     return {
         "url": response.url,
-        "price": response.amount
+        "amount": response.amount
         }
