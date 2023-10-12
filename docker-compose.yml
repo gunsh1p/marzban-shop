@@ -19,6 +19,7 @@ services:
             PANEL_GLOBAL: ${PANEL_GLOBAL}
             PANEL_USER: ${PANEL_USER}
             PANEL_PASS: ${PANEL_PASS}
+            WEBHOOK_URL: ${WEBHOOK_URL}
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"
