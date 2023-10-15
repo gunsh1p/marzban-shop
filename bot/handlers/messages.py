@@ -3,7 +3,6 @@ import uuid
 from aiogram import Router, F
 from aiogram import Dispatcher
 from aiogram.types import Message, PreCheckoutQuery
-from aiogram.enums.content_type import ContentType
 from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 from sqlalchemy.ext.asyncio import AsyncSession
