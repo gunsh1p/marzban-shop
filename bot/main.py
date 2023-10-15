@@ -14,7 +14,7 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_applicati
 from handlers.commands import register_commands
 from handlers.messages import register_messages
 from handlers.callbacks import register_callbacks
-from app.routes import check_crypto_payment, handle_webhook
+from app.routes import check_crypto_payment
 from middlewares import DbSessionMiddleware
 from db.base import Base
 import glv
@@ -55,7 +55,7 @@ def main():
     setup_database()
     glv.dp.startup.register(on_startup)
 
-    app.router.add_post("/crypto_status", check_crypto_payment)
+    app.router.add_post("/cryptomus_payment", check_crypto_payment)
     
     webhook_requests_handler = SimpleRequestHandler(
         dispatcher=glv.dp,

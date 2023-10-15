@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-11 00:05+0300\n"
-"PO-Revision-Date: 2023-10-11 00:07+0300\n"
+"POT-Creation-Date: 2023-10-15 17:47+0300\n"
+"PO-Revision-Date: 2023-10-15 17:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -47,29 +47,29 @@ msgid ""
 "⬇️Select an action"
 msgstr ""
 
-#: bot/handlers/messages.py:25
+#: bot/handlers/messages.py:24
 msgid "Read the <a href=\"{rules}\">rules</a> before buying"
 msgstr ""
 
-#: bot/handlers/messages.py:29
+#: bot/handlers/messages.py:28
 msgid "⬇️Tariffs"
 msgstr ""
 
-#: bot/handlers/messages.py:38
+#: bot/handlers/messages.py:37
 msgid "You haven't the VPN profile. Just buy the subscription to join out family"
 msgstr ""
 
-#: bot/handlers/messages.py:41
+#: bot/handlers/messages.py:40
 msgid ""
 "You can find out more about your subscription by following this <a href="
 "\"{link}\">link</a>"
 msgstr ""
 
-#: bot/handlers/messages.py:52
+#: bot/handlers/messages.py:51
 msgid "Follow the <a href=\"{link}\">link</a> for help"
 msgstr ""
 
-#: bot/handlers/messages.py:94
+#: bot/handlers/messages.py:93
 msgid ""
 "Thank you for your purchase. For instructions on how to connect, please follow "
 "this <a href=\"{link}\">link</a>"
@@ -87,19 +87,19 @@ msgstr ""
 msgid "Pay"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:7
+#: bot/keyboards/main_menu.py:10
 msgid "🛍️Buy"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:10
+#: bot/keyboards/main_menu.py:13
 msgid "👤Profile"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:11
+#: bot/keyboards/main_menu.py:14
 msgid "ℹ️Information"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:14
+#: bot/keyboards/main_menu.py:17
 msgid "☎️Support"
 msgstr ""
 

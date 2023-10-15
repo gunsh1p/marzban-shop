@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-11 00:05+0300\n"
-"PO-Revision-Date: 2023-10-11 00:10+0300\n"
+"POT-Creation-Date: 2023-10-15 17:47+0300\n"
+"PO-Revision-Date: 2023-10-15 17:54+0300\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 "
+"&& (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
@@ -55,37 +55,36 @@ msgstr ""
 "\n"
 "⬇️Выберите действие"
 
-#: bot/handlers/messages.py:25
+#: bot/handlers/messages.py:24
 msgid "Read the <a href=\"{rules}\">rules</a> before buying"
 msgstr "Прочитайте <a href=\"{rules}\">правила</a> перед покупкой"
 
-#: bot/handlers/messages.py:29
+#: bot/handlers/messages.py:28
 msgid "⬇️Tariffs"
 msgstr "⬇️Тарифы"
 
-#: bot/handlers/messages.py:38
+#: bot/handlers/messages.py:37
 msgid "You haven't the VPN profile. Just buy the subscription to join out family"
-msgstr ""
-"У вас нет профиля VPN. Просто купите подписку, чтобы присоединиться к нам"
+msgstr "У вас нет профиля VPN. Просто купите подписку, чтобы присоединиться к нам"
 
-#: bot/handlers/messages.py:41
+#: bot/handlers/messages.py:40
 msgid ""
 "You can find out more about your subscription by following this <a href="
 "\"{link}\">link</a>"
 msgstr ""
 "Подробнее о подписке можно узнать, пройдя по этой <a href=\"{link}\">ссылке</a>"
 
-#: bot/handlers/messages.py:52
+#: bot/handlers/messages.py:51
 msgid "Follow the <a href=\"{link}\">link</a> for help"
 msgstr "Перейдите по <a href=\"{link}\">ссылке</a> для помощи"
 
-#: bot/handlers/messages.py:94
+#: bot/handlers/messages.py:93
 msgid ""
 "Thank you for your purchase. For instructions on how to connect, please follow "
 "this <a href=\"{link}\">link</a>"
 msgstr ""
-"Благодарим Вас за покупку. Для получения инструкций по подключению, "
-"пожалуйста, перейдите по этой <a href=\"{link}\">ссылке</a>"
+"Благодарим Вас за покупку. Для получения инструкций по подключению, пожалуйста, "
+"перейдите по этой <a href=\"{link}\">ссылке</a>"
 
 #: bot/keyboards/back.py:7
 msgid "🔙Back"
@@ -99,22 +98,22 @@ msgstr "{title} - {price_en}$/{price_ru}руб"
 msgid "Pay"
 msgstr "Оплатить"
 
-#: bot/keyboards/main_menu.py:7
+#: bot/keyboards/main_menu.py:10
 msgid "🛍️Buy"
 msgstr "🛍️Купить"
 
-#: bot/keyboards/main_menu.py:10
+#: bot/keyboards/main_menu.py:13
 msgid "👤Profile"
 msgstr "👤Профиль"
 
-#: bot/keyboards/main_menu.py:11
+#: bot/keyboards/main_menu.py:14
 msgid "ℹ️Information"
 msgstr "ℹ️Информация"
 
-#: bot/keyboards/main_menu.py:14
+#: bot/keyboards/main_menu.py:17
 msgid "☎️Support"
 msgstr "☎️Поддержка"
 
 #: bot/keyboards/payments.py:9
 msgid "ЮKassa - {price}rub"
-msgstr ""
+msgstr "ЮKassa - {price}руб"

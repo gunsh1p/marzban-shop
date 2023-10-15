@@ -49,7 +49,11 @@ async def callback_payment_method_select(callback: CallbackQuery):
     if data not in goods.get_callbacks():
         await callback.answer()
         return
-    result = await create_payment(callback.from_user.id, data, callback.message.chat.id)
+    result = await create_payment(
+        callback.from_user.id, 
+        data, 
+        callback.message.chat.id, 
+        callback.from_user.language_code)
     now = datetime.now()
     expire_date = (now + timedelta(minutes=10)).strftime("%d/%m/%Y, %H:%M")
     await callback.message.answer(

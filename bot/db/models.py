@@ -14,6 +14,7 @@ class CPayments(Base):
 
     id = Column(BigInteger, primary_key=True, unique=True, autoincrement=True)
     tg_id = Column(BigInteger)
+    lang = Column(String(64))
     payment_uuid = Column(String(64))
     order_id = Column(String(64))
     chat_id = Column(BigInteger)
