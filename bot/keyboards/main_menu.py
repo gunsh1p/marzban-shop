@@ -2,6 +2,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.i18n import gettext as _
 
 from services import get_i18n_string
+import glv
 
 def get_main_menu_keyboard(lang=None) -> ReplyKeyboardMarkup:
     if lang is None:
@@ -18,6 +19,9 @@ def get_main_menu_keyboard(lang=None) -> ReplyKeyboardMarkup:
             ]
         ]
         
+        if glv.config['TEST_PERIOD']:
+            kb.insert(0, [KeyboardButton(text=_("⏳️Test subscription")),])
+        
         return ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
     kb = [
         [
@@ -31,5 +35,8 @@ def get_main_menu_keyboard(lang=None) -> ReplyKeyboardMarkup:
             KeyboardButton(text=get_i18n_string("☎️Support", lang))
         ]
     ]
+        
+    if glv.config['TEST_PERIOD']:
+        kb.insert(0, [KeyboardButton(text=get_i18n_string("⏳️Test subscription", lang)),])
 
     return ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)   
