@@ -45,7 +45,7 @@ async def profile(message: Message, session: AsyncSession):
 async def information(message: Message):
     await message.answer(text=glv.config['ABOUT'],reply_markup=get_back_keyboard())
 
-@router.message(F.text == __("☎️Support"))
+@router.message(F.text == __("Support"))
 async def support(message: Message):
     await message.answer(
         _("Follow the <a href=\"{link}\">link</a> for help").format(

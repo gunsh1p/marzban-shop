@@ -53,7 +53,7 @@ msgstr ""
 "\n"
 "🎉 Добро пожаловать в {title}\n"
 "\n"
-"⬇️Выберите действие"
+"⬇️Select действие"
 
 #: bot/handlers/messages.py:24
 msgid "Read the <a href=\"{rules}\">rules</a> before buying"
@@ -61,7 +61,7 @@ msgstr "Прочитайте <a href=\"{rules}\">правила</a> перед �
 
 #: bot/handlers/messages.py:28
 msgid "⬇️Tariffs"
-msgstr "⬇️Тарифы"
+msgstr "⬇️Tariffs"
 
 #: bot/handlers/messages.py:37
 msgid "You haven't the VPN profile. Just buy the subscription to join out family"
