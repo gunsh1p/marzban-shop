@@ -1,4 +1,5 @@
 import uuid
+import hashlib
 
 from aiogram import Router, F
 from aiogram import Dispatcher
@@ -6,13 +7,13 @@ from aiogram.types import Message, PreCheckoutQuery
 from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, update
 from marzpy import Marzban
 from marzpy.api.user import User
 
 from .commands import start
 from keyboards import get_buy_menu_keyboard, get_back_keyboard, get_main_menu_keyboard
-from db.models import VPNUsers
+from db.models import VPNUsers, CPayments
 from utils import marzban_api, goods
 import glv
 
@@ -51,6 +52,49 @@ async def support(message: Message):
         _("Follow the <a href=\"{link}\">link</a> for help").format(
             link=glv.config['SUPPORT_LINK']),
         reply_markup=get_back_keyboard())
+
+@router.message(F.text == __("⏳️Test subscription"))
+async def test_subscription(message: Message, session: AsyncSession):
+    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
+    mytoken = panel.get_token()
+    sql_query = select(VPNUsers).where(VPNUsers.tg_id == message.from_user.id)
+    result: CPayments = (await session.execute(sql_query)).fetchone()[0]
+    if result.test:
+        await message.answer(
+            _("Sorry but you've already activated test subscription"),
+            reply_markup=get_main_menu_keyboard())
+        return
+    await message.answer(_("Wait, the test subscription is being generated"))
+    if marzban_api.check_if_exists(result.vpn_id, panel):
+        user = panel.get_user(result.vpn_id, mytoken)
+        user.expire += marzban_api.get_test_subscription(glv.config['PERIOD_LIMIT'], True)
+        result: User = panel.modify_user(result.vpn_id, mytoken, user)
+    else:
+        user = User(
+            username=result.vpn_id,
+            proxies={
+                "vless": {
+                    "id": str(uuid.uuid4()),
+                    "flow": "xtls-rprx-vision"
+                },
+            },
+            inbounds={
+                "vless": ["VLESS TCP REALITY"]
+            },
+            expire=marzban_api.get_test_subscription(glv.config['PERIOD_LIMIT']),
+            data_limit=0,
+            data_limit_reset_strategy="no_reset",
+        )
+        result: User = panel.add_user(user=user, token=mytoken)
+    sql_q = update(VPNUsers).where(VPNUsers.tg_id == message.from_user.id).values(test=True)
+    await session.execute(sql_q)
+    await session.commit()
+    await message.answer(
+        _("Here is your test subscription <a href=\"{link}\">link</a>").format(
+            link=glv.config['PANEL_GLOBAL'] + result.subscription_url
+        ),
+        reply_markup=get_main_menu_keyboard()
+    )
     
 @router.message(F.text == __("🔙Back"))
 async def start_text(message: Message, session: AsyncSession):

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, BigInteger, String
+from sqlalchemy import Column, BigInteger, String, Boolean
 
 from db.base import Base
 
@@ -8,6 +8,7 @@ class VPNUsers(Base):
     id = Column(BigInteger, primary_key=True, unique=True, autoincrement=True)
     tg_id = Column(BigInteger)
     vpn_id = Column(String(64), default="")
+    test = Column(Boolean, default=False)
 
 class CPayments(Base):
     __tablename__ = "crypto_payments"

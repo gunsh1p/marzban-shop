@@ -8,6 +8,8 @@ services:
         environment:
             BOT_TOKEN: ${BOT_TOKEN}
             SHOP_NAME: ${SHOP_NAME}
+            TEST_PERIOD: ${TEST_PERIOD}
+            PERIOD_LIMIT: ${PERIOD_LIMIT}
             ABOUT: ${ABOUT}
             RULES_LINK: ${RULES_LINK}
             SUPPORT_LINK: ${SUPPORT_LINK}

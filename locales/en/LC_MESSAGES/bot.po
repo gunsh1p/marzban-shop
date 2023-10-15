@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-15 17:47+0300\n"
-"PO-Revision-Date: 2023-10-15 17:53+0300\n"
+"POT-Creation-Date: 2023-10-15 21:13+0300\n"
+"PO-Revision-Date: 2023-10-15 21:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -27,14 +27,14 @@ msgstr ""
 msgid "Tariff - {title}"
 msgstr ""
 
-#: bot/handlers/callbacks.py:56
+#: bot/handlers/callbacks.py:60
 msgid ""
 "An invoice has been issued in the amount of {amount}$. Pay it by {date}. After "
 "payment, wait until the payment is approved and you receive a confirmation "
 "message"
 msgstr ""
 
-#: bot/handlers/callbacks.py:67
+#: bot/handlers/callbacks.py:71
 msgid "Select a payment method"
 msgstr ""
 
@@ -47,29 +47,41 @@ msgid ""
 "⬇️Select an action"
 msgstr ""
 
-#: bot/handlers/messages.py:24
+#: bot/handlers/messages.py:25
 msgid "Read the <a href=\"{rules}\">rules</a> before buying"
 msgstr ""
 
-#: bot/handlers/messages.py:28
+#: bot/handlers/messages.py:29
 msgid "⬇️Tariffs"
 msgstr ""
 
-#: bot/handlers/messages.py:37
+#: bot/handlers/messages.py:38
 msgid "You haven't the VPN profile. Just buy the subscription to join out family"
 msgstr ""
 
-#: bot/handlers/messages.py:40
+#: bot/handlers/messages.py:41
 msgid ""
 "You can find out more about your subscription by following this <a href="
 "\"{link}\">link</a>"
 msgstr ""
 
-#: bot/handlers/messages.py:51
+#: bot/handlers/messages.py:52
 msgid "Follow the <a href=\"{link}\">link</a> for help"
 msgstr ""
 
-#: bot/handlers/messages.py:93
+#: bot/handlers/messages.py:64
+msgid "Sorry but you've already activated test subscription"
+msgstr ""
+
+#: bot/handlers/messages.py:68
+msgid "Wait, the test subscription is being generated"
+msgstr ""
+
+#: bot/handlers/messages.py:95
+msgid "Here is your test subscription <a href=\"{link}\">link</a>"
+msgstr ""
+
+#: bot/handlers/messages.py:139
 msgid ""
 "Thank you for your purchase. For instructions on how to connect, please follow "
 "this <a href=\"{link}\">link</a>"
@@ -87,20 +99,24 @@ msgstr ""
 msgid "Pay"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:10
+#: bot/keyboards/main_menu.py:11
 msgid "🛍️Buy"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:13
+#: bot/keyboards/main_menu.py:14
 msgid "👤Profile"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:14
+#: bot/keyboards/main_menu.py:15
 msgid "ℹ️Information"
 msgstr ""
 
-#: bot/keyboards/main_menu.py:17
+#: bot/keyboards/main_menu.py:18
 msgid "☎️Support"
+msgstr ""
+
+#: bot/keyboards/main_menu.py:23
+msgid "⏳️Test subscription"
 msgstr ""
 
 #: bot/keyboards/payments.py:9
