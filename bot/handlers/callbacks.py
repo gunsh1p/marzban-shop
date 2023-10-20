@@ -6,9 +6,8 @@ from aiogram.types import CallbackQuery, LabeledPrice
 from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 
-from keyboards import get_payment_keyboard, get_crypto_keyboard
-from utils import goods
-from services import create_payment
+from keyboards import get_payment_keyboard, get_pay_keyboard
+from utils import goods, cryptomus
 import glv
 
 router = Router(name="callbacks-router") 
@@ -21,25 +20,9 @@ async def callback_payment_method_select(callback: CallbackQuery):
         await callback.answer()
         return
     good = goods.get(data)
-    if glv.config['KASSA_TOKEN'].split(':')[1] == 'TEST':
-        await glv.bot.send_message(callback.message.chat.id, "Test payment!")
-    PRICE = LabeledPrice(label="VPN Subscription", amount=good['price']['ru'] * 100)
+    
+    result = None
 
-    await glv.bot.send_invoice(callback.message.chat.id,
-                            title=_("VPN Subscription"),
-                            description=_("Tariff - {title}").format(
-                                title=good['title']
-                                ),
-                            provider_token=glv.config['KASSA_TOKEN'],
-                            currency="rub",
-                            photo_url=good['image'],
-                            photo_width=256,
-                            photo_height=256,
-                            photo_size=256,
-                            is_flexible=False,
-                            prices=[PRICE],
-                            start_parameter="vpn-subscription",
-                            payload=good['callback'])
     await callback.answer()
 
 @router.callback_query(F.data.startswith("pay_crypto_"))
@@ -49,7 +32,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
     if data not in goods.get_callbacks():
         await callback.answer()
         return
-    result = await create_payment(
+    result = await cryptomus.create_payment(
         callback.from_user.id, 
         data, 
         callback.message.chat.id, 
@@ -61,7 +44,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
             amount=result['amount'],
             date=expire_date
         ),
-        reply_markup=get_crypto_keyboard(result['url']))
+        reply_markup=get_pay_keyboard(result['url']))
     await callback.answer()
 
 @router.callback_query(lambda c: c.data in goods.get_callbacks())

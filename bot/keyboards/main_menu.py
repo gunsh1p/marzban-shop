@@ -1,7 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.i18n import gettext as _
 
-from services import get_i18n_string
+from utils import get_i18n_string
 import glv
 
 def get_main_menu_keyboard(lang=None) -> ReplyKeyboardMarkup:

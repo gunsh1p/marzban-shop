@@ -12,7 +12,7 @@ from aiogram.types import Update
 from db.models import CPayments, VPNUsers
 from keyboards import get_main_menu_keyboard
 from utils import webhook_data, goods, marzban_api
-from services import get_i18n_string
+from utils import get_i18n_string
 import glv
 
 async def check_crypto_payment(request: Request):
