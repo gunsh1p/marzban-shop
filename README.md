@@ -132,6 +132,7 @@ Don't forget to give the project a star! Thanks again!
 - LTC: `ltc1qrl3fp7cwwxsun2fsk60zxgncuutkrydwgju6a2`
 - USDT (TRC-20): `TJUUhJpeaZBBXpG6yUtzLsQmT3XQjViowV`
 - ETH: `0x052D18812fA247Ce6853a6D95213CEbdb45c6277`
+- TON: `UQBtG5NZECAH7wc2MrHnoVTv1mRzC9z-vqB-5cUpUaMJbptZ`
 
 ### License
 
