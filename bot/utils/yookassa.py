@@ -21,8 +21,24 @@ async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str
             "return_url": f"https://t.me/{(await glv.bot.get_me()).username}"
         },
         "capture": True,
-        "description": "VPN Subscription",
-        "save_payment_method": False
+        "description": f"Подписка на VPN {glv.config['SHOP_NAME']}",
+        "save_payment_method": False,
+        "reciept": {
+            "customer": {
+                "email": glv.config['EMAIL']
+            },
+            "items": [
+                {
+                    "description": "Подписка на VPN сервис",
+                    "quantity": "1",
+                    "amount": {
+                        "value": good['price']['ru'],
+                        "currency": "RUB"
+                    },
+                    "vat_code": "1"
+                },
+            ]
+        }
         })
     engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
     async with engine.connect() as conn:
