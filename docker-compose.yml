@@ -15,6 +15,7 @@ services:
             SUPPORT_LINK: ${SUPPORT_LINK}
             YOOKASSA_TOKEN: ${YOOKASSA_TOKEN}
             YOOKASSA_SHOPID: ${YOOKASSA_SHOPID}
+            EMAIL: ${EMAIL}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             MERCHANT_UUID: ${MERCHANT_UUID}
             DB_URL: ${DB_URL}

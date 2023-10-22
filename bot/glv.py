@@ -13,6 +13,7 @@ config = {
     'DB_URL': os.environ.get('DB_URL'),
     'YOOKASSA_TOKEN': os.environ.get('YOOKASSA_TOKEN'),
     'YOOKASSA_SHOPID': os.environ.get('YOOKASSA_SHOPID'),
+    'EMAIL': os.environ.get('EMAIL'),
     'CRYPTO_TOKEN': os.environ.get('CRYPTO_TOKEN'),
     'MERCHANT_UUID': os.environ.get('MERCHANT_UUID'),
     'PANEL_HOST': os.environ.get('PANEL_HOST'),
