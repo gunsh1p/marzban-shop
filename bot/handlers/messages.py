@@ -1,5 +1,5 @@
 import uuid
-import hashlib
+import time
 
 from aiogram import Router, F
 from aiogram import Dispatcher
@@ -67,7 +67,11 @@ async def test_subscription(message: Message, session: AsyncSession):
     await message.answer(_("Wait, the test subscription is being generated"))
     if marzban_api.check_if_exists(result.vpn_id, panel):
         user = panel.get_user(result.vpn_id, mytoken)
-        user.expire += marzban_api.get_test_subscription(glv.config['PERIOD_LIMIT'], True)
+        user.status = 'active'
+        if user.expire < time.time():
+            user.expire = marzban_api.get_test_subscription(glv.config['PERIOD_LIMIT'])
+        else:
+            user.expire += marzban_api.get_test_subscription(glv.config['PERIOD_LIMIT'], True)
         result: User = panel.modify_user(result.vpn_id, mytoken, user)
     else:
         user = User(

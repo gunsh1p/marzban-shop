@@ -13,7 +13,8 @@ services:
             ABOUT: ${ABOUT}
             RULES_LINK: ${RULES_LINK}
             SUPPORT_LINK: ${SUPPORT_LINK}
-            KASSA_TOKEN: ${KASSA_TOKEN}
+            YOOKASSA_TOKEN: ${YOOKASSA_TOKEN}
+            YOOKASSA_SHOPID: ${YOOKASSA_SHOPID}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             MERCHANT_UUID: ${MERCHANT_UUID}
             DB_URL: ${DB_URL}

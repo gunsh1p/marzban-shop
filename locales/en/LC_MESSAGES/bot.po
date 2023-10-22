@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-15 21:13+0300\n"
-"PO-Revision-Date: 2023-10-15 21:14+0300\n"
+"POT-Creation-Date: 2023-10-22 16:40+0300\n"
+"PO-Revision-Date: 2023-10-22 16:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -19,22 +19,20 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
-#: bot/handlers/callbacks.py:29
-msgid "VPN Subscription"
+#: bot/handlers/callbacks.py:27
+msgid ""
+"An invoice has been issued in the amount of {amount} RUB. After payment, wait "
+"until the payment is approved and you receive a confirmation message"
 msgstr ""
 
-#: bot/handlers/callbacks.py:30
-msgid "Tariff - {title}"
-msgstr ""
-
-#: bot/handlers/callbacks.py:60
+#: bot/handlers/callbacks.py:48
 msgid ""
 "An invoice has been issued in the amount of {amount}$. Pay it by {date}. After "
 "payment, wait until the payment is approved and you receive a confirmation "
 "message"
 msgstr ""
 
-#: bot/handlers/callbacks.py:71
+#: bot/handlers/callbacks.py:59
 msgid "Select a payment method"
 msgstr ""
 
@@ -73,15 +71,15 @@ msgstr ""
 msgid "Sorry but you've already activated test subscription"
 msgstr ""
 
-#: bot/handlers/messages.py:68
+#: bot/handlers/messages.py:67
 msgid "Wait, the test subscription is being generated"
 msgstr ""
 
-#: bot/handlers/messages.py:95
+#: bot/handlers/messages.py:97
 msgid "Here is your test subscription <a href=\"{link}\">link</a>"
 msgstr ""
 
-#: bot/handlers/messages.py:139
+#: bot/handlers/messages.py:141
 msgid ""
 "Thank you for your purchase. For instructions on how to connect, please follow "
 "this <a href=\"{link}\">link</a>"
@@ -93,10 +91,6 @@ msgstr ""
 
 #: bot/keyboards/buy_menu.py:11
 msgid "{title} - {price_en}$/{price_ru}rub"
-msgstr ""
-
-#: bot/keyboards/crypto_buy.py:9
-msgid "Pay"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:11
@@ -117,6 +111,10 @@ msgstr ""
 
 #: bot/keyboards/main_menu.py:23
 msgid "⏳️Test subscription"
+msgstr ""
+
+#: bot/keyboards/pay.py:9
+msgid "Pay"
 msgstr ""
 
 #: bot/keyboards/payments.py:9

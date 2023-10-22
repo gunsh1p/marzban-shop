@@ -1,12 +1,9 @@
-import asyncio
-import uuid
 import hashlib
 import time
 
 from pyCryptomusAPI import pyCryptomusAPI, Invoice
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import insert
-from aiogram.utils.i18n import gettext as _
 
 from db.models import CPayments
 from utils import goods

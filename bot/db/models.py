@@ -20,3 +20,13 @@ class CPayments(Base):
     order_id = Column(String(64))
     chat_id = Column(BigInteger)
     callback = Column(String(64))
+
+class YPayments(Base):
+    __tablename__ = "yookassa_payments"
+
+    id = Column(BigInteger, primary_key=True, unique=True, autoincrement=True)
+    tg_id = Column(BigInteger)
+    lang = Column(String(64))
+    payment_id = Column(String(64))
+    chat_id = Column(BigInteger)
+    callback = Column(String(64))
