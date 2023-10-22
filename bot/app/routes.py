@@ -30,7 +30,7 @@ YOOKASSA_IPS = (
 async def check_crypto_payment(request: Request):
     client_ip = request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
     logging.getLogger('aiohttp.client').info(client_ip)
-    if client_ip not in ["127.0.0.1", "91.227.144.54"]:
+    if client_ip not in ["91.227.144.54"]:
         return web.Response(status=403)
     data = await request.json()
     if not webhook_data.check(data, glv.config['CRYPTO_TOKEN']):
@@ -92,9 +92,18 @@ async def check_crypto_payment(request: Request):
 async def check_yookassa_payment(request: Request):
     client_ip = request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
     logging.getLogger('aiohttp.client').info(client_ip)
+    f = True
     for subnet in YOOKASSA_IPS:
-        if ipaddress.ip_address(client_ip) not in ipaddress.ip_network(subnet) and client_ip != "127.0.0.1":
-            return web.Response(status=403)
+        if "/" in subnet:
+            if ipaddress.ip_address(client_ip) in ipaddress.ip_network(subnet):
+                f = False
+                break
+        else:
+            if client_ip == subnet:
+                f = False
+                break
+    if f:
+        return web.Response(status=403)
     data = (await request.json())['object']
     engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
     async with engine.connect() as conn:
