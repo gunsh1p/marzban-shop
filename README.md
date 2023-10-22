@@ -97,7 +97,9 @@ docker compose up -d
 #### Difference between host and global
 
 There are two environment variables PANEL_HOST and PANEL_GLOBAL
-PANEL_HOST - address of the panel for interaction with API. If the panel is on the same server as marzban-shop, then localhost should be specified as the address. For example, <http://localhost:8080><br>
+
+PANEL_HOST - address of the panel for interaction with API. If the panel is on the same server as marzban-shop, then localhost should be specified as the address. For example, <http://localhost:8080>
+
 PANEL_GLOBAL - address for issuing subscriptions. It is used for substitution of a link to the subscription. It should be accessible not only in the local network, but also outside it
 
 #### About webhook
@@ -137,5 +139,6 @@ The project is under the [GPL-3.0](https://github.com/gunsh1p/marzban-shop/blob/
 
 ### Contacts
 
-Email: <bertollo@gunship.su><br>
+Email: <bertollo@gunship.su>
+
 Telegram: [@blackbloodredkiss](https://t.me/blackbloodredkiss)
