@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-15 21:13+0300\n"
-"PO-Revision-Date: 2023-10-15 21:14+0300\n"
+"POT-Creation-Date: 2023-10-22 16:40+0300\n"
+"PO-Revision-Date: 2023-10-22 16:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
@@ -20,15 +20,16 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 "X-Generator: Poedit 3.4\n"
 
-#: bot/handlers/callbacks.py:29
-msgid "VPN Subscription"
-msgstr "Подписка на VPN"
+#: bot/handlers/callbacks.py:27
+msgid ""
+"An invoice has been issued in the amount of {amount} RUB. After payment, wait "
+"until the payment is approved and you receive a confirmation message"
+msgstr ""
+"Выставлен счёт на сумму {amount}$. После оплаты подождите, пока платёж будет "
+"одобрен и вам придёт сообщение с подтверждением"
 
-#: bot/handlers/callbacks.py:30
-msgid "Tariff - {title}"
-msgstr "Тариф - {title}"
-
-#: bot/handlers/callbacks.py:60
+#: bot/handlers/callbacks.py:48
+#, fuzzy
 msgid ""
 "An invoice has been issued in the amount of {amount}$. Pay it by {date}. After "
 "payment, wait until the payment is approved and you receive a confirmation "
@@ -37,7 +38,7 @@ msgstr ""
 "Выставлен счёт на сумму {amount}$. Оплатите его до {date}. После оплаты "
 "подождите, пока платёж будет одобрен и вам придёт сообщение с подтверждением"
 
-#: bot/handlers/callbacks.py:71
+#: bot/handlers/callbacks.py:59
 msgid "Select a payment method"
 msgstr "Выберите способ оплаты"
 
@@ -82,15 +83,15 @@ msgstr "Перейдите по <a href=\"{link}\">ссылке</a> для по�
 msgid "Sorry but you've already activated test subscription"
 msgstr "Извините, но вы уже активировали тестовую подписку"
 
-#: bot/handlers/messages.py:68
+#: bot/handlers/messages.py:67
 msgid "Wait, the test subscription is being generated"
 msgstr "Подождите, идет формирование тестовой подписки"
 
-#: bot/handlers/messages.py:95
+#: bot/handlers/messages.py:97
 msgid "Here is your test subscription <a href=\"{link}\">link</a>"
 msgstr "Вот <a href=\"{link}\">ссылка</a> на тестовую подписку"
 
-#: bot/handlers/messages.py:139
+#: bot/handlers/messages.py:141
 msgid ""
 "Thank you for your purchase. For instructions on how to connect, please follow "
 "this <a href=\"{link}\">link</a>"
@@ -105,10 +106,6 @@ msgstr "🔙Назад"
 #: bot/keyboards/buy_menu.py:11
 msgid "{title} - {price_en}$/{price_ru}rub"
 msgstr "{title} - {price_en}$/{price_ru}руб"
-
-#: bot/keyboards/crypto_buy.py:9
-msgid "Pay"
-msgstr "Оплатить"
 
 #: bot/keyboards/main_menu.py:11
 msgid "🛍️Buy"
@@ -130,6 +127,16 @@ msgstr "☎️Поддержка"
 msgid "⏳️Test subscription"
 msgstr "⏳️Тестовая подписка"
 
+#: bot/keyboards/pay.py:9
+msgid "Pay"
+msgstr "Оплатить"
+
 #: bot/keyboards/payments.py:9
 msgid "ЮKassa - {price}rub"
 msgstr "ЮKassa - {price}руб"
+
+#~ msgid "VPN Subscription"
+#~ msgstr "Подписка на VPN"
+
+#~ msgid "Tariff - {title}"
+#~ msgstr "Тариф - {title}"

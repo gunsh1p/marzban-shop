@@ -1,6 +1,3 @@
-import logging
-import json
-
 from yookassa import Configuration
 from yookassa import Payment
 from sqlalchemy.ext.asyncio import create_async_engine
@@ -23,7 +20,7 @@ async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str
             "type": "redirect",
             "return_url": f"https://t.me/{(await glv.bot.get_me()).username}"
         },
-        "capture": False,
+        "capture": True,
         "description": "VPN Subscription",
         "save_payment_method": False
         })
