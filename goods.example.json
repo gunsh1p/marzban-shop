@@ -5,7 +5,6 @@
             "en": 1,
             "ru": 100
         },
-        "image": "https://cdn-icons-png.flaticon.com/512/6554/6554321.png",
         "callback": "simple_vpn",
         "months": 1
     }
