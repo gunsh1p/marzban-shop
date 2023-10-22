@@ -23,7 +23,7 @@ async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str
         "capture": True,
         "description": f"Подписка на VPN {glv.config['SHOP_NAME']}",
         "save_payment_method": False,
-        "reciept": {
+        "receipt": {
             "customer": {
                 "email": glv.config['EMAIL']
             },
