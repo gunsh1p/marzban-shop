@@ -1,3 +1,4 @@
+import logging
 import json
 
 from yookassa import Configuration
@@ -5,7 +6,7 @@ from yookassa import Payment
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import insert
 
-from db.models import CPayments
+from db.models import YPayments
 from utils import goods
 import glv
 
@@ -13,29 +14,26 @@ Configuration.configure(glv.config['YOOKASSA_SHOPID'], glv.config['YOOKASSA_TOKE
     
 async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str) -> dict:
     good = goods.get(callback)
-    payment = Payment.create({
+    resp = Payment.create({
         "amount": {
             "value": good['price']['ru'],
             "currency": "RUB"
         },
-        "payment_method_data": {
-            "type": "bank_card"
-        },
         "confirmation": {
             "type": "redirect",
-            "return_url": "Ссылка, куда перенаправить после совершения платежа"
+            "return_url": f"https://t.me/{(await glv.bot.get_me()).username}"
         },
-        "capture": True,
-        "description": ""
+        "capture": False,
+        "description": "VPN Subscription",
+        "save_payment_method": False
         })
-    resp = json.loads(payment)
-    # engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
-    # async with engine.connect() as conn:
-    #     sql_q = insert(CPayments).values(tg_id=tg_id, payment_uuid=resp['id'], order_id=response.order_id, chat_id=chat_id, callback=callback, lang=lang_code)
-    #     await conn.execute(sql_q)
-    #     await conn.commit()
-    # await engine.dispose()
-    # return {
-    #     "url": response.url,
-    #     "amount": response.amount
-    #     }
+    engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
+    async with engine.connect() as conn:
+        sql_q = insert(YPayments).values(tg_id=tg_id, payment_id=resp.id, chat_id=chat_id, callback=callback, lang=lang_code)
+        await conn.execute(sql_q)
+        await conn.commit()
+    await engine.dispose()
+    return {
+        "url": resp.confirmation.confirmation_url,
+        "amount": resp.amount.value
+    }

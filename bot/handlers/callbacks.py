@@ -7,7 +7,7 @@ from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 
 from keyboards import get_payment_keyboard, get_pay_keyboard
-from utils import goods, cryptomus
+from utils import goods, cryptomus, yookassa
 import glv
 
 router = Router(name="callbacks-router") 
@@ -21,8 +21,19 @@ async def callback_payment_method_select(callback: CallbackQuery):
         return
     good = goods.get(data)
     
-    result = None
-
+    result = await yookassa.create_payment(
+        callback.from_user.id, 
+        data, 
+        callback.message.chat.id, 
+        callback.from_user.language_code)
+    now = datetime.now()
+    expire_date = (now + timedelta(minutes=60)).strftime("%d/%m/%Y, %H:%M")
+    await callback.message.answer(
+        _("An invoice has been issued in the amount of {amount} RUB. Pay it by {date}. After payment, wait until the payment is approved and you receive a confirmation message").format(
+            amount=result['amount'],
+            date=expire_date
+        ),
+        reply_markup=get_pay_keyboard(result['url']))
     await callback.answer()
 
 @router.callback_query(F.data.startswith("pay_crypto_"))
@@ -38,7 +49,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
         callback.message.chat.id, 
         callback.from_user.language_code)
     now = datetime.now()
-    expire_date = (now + timedelta(minutes=10)).strftime("%d/%m/%Y, %H:%M")
+    expire_date = (now + timedelta(minutes=60)).strftime("%d/%m/%Y, %H:%M")
     await callback.message.answer(
         _("An invoice has been issued in the amount of {amount}$. Pay it by {date}. After payment, wait until the payment is approved and you receive a confirmation message").format(
             amount=result['amount'],

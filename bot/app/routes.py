@@ -1,5 +1,6 @@
 import uuid
 import logging
+import time
 
 from aiohttp.web_request import Request
 from aiohttp import web
@@ -35,7 +36,11 @@ async def check_crypto_payment(request: Request):
             user_row = (await conn.execute(sql_query)).fetchone()
             if marzban_api.check_if_exists(user_row.vpn_id, panel):
                 user = panel.get_user(user_row.vpn_id, mytoken)
-                user.expire += marzban_api.get_subscription_end_date(good['months'], True)
+                user.status = 'active'
+                if user.expire < time.time():
+                    user.expire = marzban_api.get_subscription_end_date(good['months'])
+                else:
+                    user.expire += marzban_api.get_subscription_end_date(good['months'], True)
                 result = panel.modify_user(user_row.vpn_id, mytoken, user)
             else:
                 user = User(
