@@ -4,7 +4,6 @@ services:
         build: .
         restart: always
         stop_signal: SIGINT
-        network_mode: host
         environment:
             BOT_TOKEN: ${BOT_TOKEN}
             SHOP_NAME: ${SHOP_NAME}
@@ -25,19 +24,22 @@ services:
             PANEL_PASS: ${PANEL_PASS}
             WEBHOOK_URL: ${WEBHOOK_URL}
             WEBHOOK_PORT: ${WEBHOOK_PORT}
+        ports:
+            - "8081:8081"
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"
         depends_on:
             - db
     db:
-        image: postgres:12-alpine
+        image: mariadb:latest
         restart: always
         environment:
-            POSTGRES_USER: ${DB_USER}
-            POSTGRES_PASSWORD: ${DB_PASS}
-            POSTGRES_DB: ${DB_NAME}
+            MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS}
+            MARIADB_DATABASE: ${DB_NAME}
+            MARIADB_USER: ${DB_USER}
+            MARIADB_PASSWORD: ${DB_PASS}
         ports:
-            - "5432:5432"
+            - 3306:3306
         volumes:
-            - "./data/db:/var/lib/postgresql/data"
+            - "./data/db:/var/lib/mysql"
