@@ -17,15 +17,17 @@ services:
             EMAIL: ${EMAIL}
             CRYPTO_TOKEN: ${CRYPTO_TOKEN}
             MERCHANT_UUID: ${MERCHANT_UUID}
-            DB_URL: ${DB_URL}
+            DB_NAME: ${DB_NAME}
+            DB_USER: ${DB_USER}
+            DB_PASS: ${DB_PASS}
+            DB_ADDRESS: ${DB_ADDRESS}
             PANEL_HOST: ${PANEL_HOST}
             PANEL_GLOBAL: ${PANEL_GLOBAL}
             PANEL_USER: ${PANEL_USER}
             PANEL_PASS: ${PANEL_PASS}
             WEBHOOK_URL: ${WEBHOOK_URL}
-            WEBHOOK_PORT: ${WEBHOOK_PORT}
         ports:
-            - "8081:8081"
+            - "${WEBHOOK_PORT}:8080"
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"

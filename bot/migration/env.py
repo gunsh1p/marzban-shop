@@ -12,7 +12,7 @@ from db.models import Base
 # access to the values within the .ini file in use.
 config = context.config
 
-config.set_main_option('sqlalchemy.url', os.environ.get('DB_URL'))
+config.set_main_option('sqlalchemy.url', f"mysql+pymysql://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASS')}@{os.environ.get('DB_ADDRESS')}:3306/{os.environ.get('DB_NAME')}")
 target_metadata = Base.metadata
 
 # Interpret the config file for Python logging.
