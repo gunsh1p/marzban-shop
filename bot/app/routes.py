@@ -8,8 +8,8 @@ from aiohttp import web
 from marzpy import Marzban
 from marzpy.api.user import User
 from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.pool import NullPool
 from sqlalchemy import select, delete
-from aiogram.types import Update
 
 from db.models import CPayments, VPNUsers, YPayments
 from keyboards import get_main_menu_keyboard
@@ -35,7 +35,7 @@ async def check_crypto_payment(request: Request):
     data = await request.json()
     if not webhook_data.check(data, glv.config['CRYPTO_TOKEN']):
         return web.Response(status=403)
-    engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
+    engine = create_async_engine(url=glv.config['DB_URL'], echo=True, pollclass=NullPool)
     async with engine.connect() as conn:
         sql_q = select(CPayments).where(CPayments.order_id == data['order_id'])
         payment: CPayments = (await conn.execute(sql_q)).fetchone()
@@ -105,7 +105,7 @@ async def check_yookassa_payment(request: Request):
     if f:
         return web.Response(status=403)
     data = (await request.json())['object']
-    engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
+    engine = create_async_engine(url=glv.config['DB_URL'], echo=True, pollclass=NullPool)
     async with engine.connect() as conn:
         sql_q = select(YPayments).where(YPayments.payment_id == data['id'])
         payment: YPayments = (await conn.execute(sql_q)).fetchone()

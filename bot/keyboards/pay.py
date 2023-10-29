@@ -7,7 +7,7 @@ def get_pay_keyboard(pay_url) -> InlineKeyboardMarkup:
     builder.row(
         InlineKeyboardButton(
             text=_("Pay"),
-            web_app=WebAppInfo(url=pay_url)
+            url=pay_url
         )
     )
     return builder.as_markup()
