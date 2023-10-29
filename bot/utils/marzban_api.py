@@ -24,7 +24,7 @@ async def get_marzban_profile(tg_id: int) -> User:
     mytoken = panel.get_token()
     return panel.get_user(result.vpn_id, mytoken)
 
-def generate_test_subscription(username: int) -> User:
+def generate_test_subscription(username: str) -> User:
     mytoken = panel.get_token()
     if check_if_user_exists(username):
         user = panel.get_user(result.vpn_id, mytoken)
@@ -51,6 +51,35 @@ def generate_test_subscription(username: int) -> User:
             data_limit_reset_strategy="no_reset",
         )
         result: User = panel.add_user(user=user, token=mytoken)
+    return result
+
+def generate_marzban_subscription(username: str, good) -> User:
+    mytoken = panel.get_token()
+    if check_if_user_exists(username):
+        user = panel.get_user(username, mytoken)
+        user.status = 'active'
+        if user.expire < time.time():
+            user.expire = get_subscription_end_date(good['months'])
+        else:
+            user.expire += get_subscription_end_date(good['months'], True)
+        result = panel.modify_user(username, mytoken, user)
+    else:
+        user = User(
+                username=username,
+                proxies={
+                    "vless": {
+                        "id": str(uuid.uuid4()),
+                        "flow": "xtls-rprx-vision"
+                    },
+                },
+                inbounds={
+                    "vless": ["VLESS TCP REALITY"]
+                },
+                expire=get_subscription_end_date(good['months']),
+                data_limit=0,
+                data_limit_reset_strategy="no_reset",
+            )
+        result = panel.add_user(user=user, token=mytoken)
     return result
 
 def get_test_subscription(days: int, additional= False) -> int:
