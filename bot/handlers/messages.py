@@ -6,7 +6,7 @@ from aiogram.utils.i18n import lazy_gettext as __
 
 from .commands import start
 from keyboards import get_buy_menu_keyboard, get_back_keyboard, get_main_menu_keyboard
-from db.methods import can_get_test_sub, update_test_subscription_state
+from db.methods import can_get_test_sub, update_test_subscription_state, create_vpn_profile
 from utils import marzban_api
 import glv
 
@@ -45,12 +45,13 @@ async def support(message: Message):
 @router.message(F.text == __("⏳️Test subscription"))
 async def test_subscription(message: Message):
     result = await can_get_test_sub(message.from_user.id)
-    if not result:
+    if result:
         await message.answer(
             _("Sorry but you've already activated test subscription"),
             reply_markup=get_main_menu_keyboard())
         return
     await message.answer(_("Wait, the test subscription is being generated"))
+    result = await create_vpn_profile(message.from_user.id)
     result = marzban_api.generate_test_subscription(result.vpn_id)
     await update_test_subscription_state(message.from_user.id)
     await message.answer(
