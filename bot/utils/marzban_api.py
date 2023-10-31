@@ -7,9 +7,8 @@ from marzpy.api.user import User
 from db.methods import get_marzban_profile_db
 import glv
 
-panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
-
 def check_if_user_exists(name: str) -> bool:
+    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
     mytoken = panel.get_token()
     try:
         panel.get_user(name, mytoken)
@@ -18,6 +17,7 @@ def check_if_user_exists(name: str) -> bool:
         return False
 
 async def get_marzban_profile(tg_id: int) -> User:
+    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
     result = await get_marzban_profile_db(tg_id)
     if not check_if_user_exists(result.vpn_id):
         return None
@@ -25,6 +25,7 @@ async def get_marzban_profile(tg_id: int) -> User:
     return panel.get_user(result.vpn_id, mytoken)
 
 def generate_test_subscription(username: str) -> User:
+    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
     mytoken = panel.get_token()
     if check_if_user_exists(username):
         user = panel.get_user(username, mytoken)
@@ -33,10 +34,10 @@ def generate_test_subscription(username: str) -> User:
             user.expire = get_test_subscription(glv.config['PERIOD_LIMIT'])
         else:
             user.expire += get_test_subscription(glv.config['PERIOD_LIMIT'], True)
-        result: User = panel.modify_user(result.vpn_id, mytoken, user)
+        result: User = panel.modify_user(username, mytoken, user)
     else:
         user = User(
-            username=result.vpn_id,
+            username=username,
             proxies={
                 "vless": {
                     "id": str(uuid.uuid4()),
@@ -54,6 +55,7 @@ def generate_test_subscription(username: str) -> User:
     return result
 
 def generate_marzban_subscription(username: str, good) -> User:
+    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
     mytoken = panel.get_token()
     if check_if_user_exists(username):
         user = panel.get_user(username, mytoken)
