@@ -8,6 +8,8 @@ from utils import goods
 import glv
 
 async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str) -> dict:
+    if not (glv.config['MERCHANT_UUID'] and glv.config['CRYPTO_TOKEN']):
+        return
     client = pyCryptomusAPI(
         glv.config['MERCHANT_UUID'],
         payment_api_key=glv.config['CRYPTO_TOKEN'])
