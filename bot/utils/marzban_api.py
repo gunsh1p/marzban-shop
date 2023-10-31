@@ -27,7 +27,7 @@ async def get_marzban_profile(tg_id: int) -> User:
 def generate_test_subscription(username: str) -> User:
     mytoken = panel.get_token()
     if check_if_user_exists(username):
-        user = panel.get_user(result.vpn_id, mytoken)
+        user = panel.get_user(username, mytoken)
         user.status = 'active'
         if user.expire < time.time():
             user.expire = get_test_subscription(glv.config['PERIOD_LIMIT'])
