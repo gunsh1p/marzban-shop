@@ -7,7 +7,7 @@ from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 
 from keyboards import get_payment_keyboard, get_pay_keyboard
-from utils import goods, cryptomus, yookassa
+from utils import goods, yookassa, cryptomus
 
 router = Router(name="callbacks-router") 
 

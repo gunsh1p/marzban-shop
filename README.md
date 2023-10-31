@@ -102,6 +102,8 @@ PANEL_HOST - address of the panel for interaction with API. If the panel is on t
 
 PANEL_GLOBAL - address for issuing subscriptions. It is used for substitution of a link to the subscription. It should be accessible not only in the local network, but also outside it
 
+!WARNING! If the XRAY_SUBSCRIPTION_LINK variable in your marzban panel is set, leave the PANEL_GLOBAL variable empty
+
 #### About webhook
 
 To receive responses from the Telegram server and payment provider servers, webhook is used. This should be the address to which all these servers will contact. It must be a domain with TLS 1.2 or higher. Requests should be routed to the port you specified in .env in the WEBHOOK_PORT variable.

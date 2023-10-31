@@ -1,14 +1,13 @@
 from yookassa import Configuration
 from yookassa import Payment
-from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy import insert
 
-from db.models import YPayments
+from db.methods import add_yookassa_payment
 from utils import goods
 import glv
 
-Configuration.configure(glv.config['YOOKASSA_SHOPID'], glv.config['YOOKASSA_TOKEN'])
-    
+if glv.config['YOOKASSA_SHOPID'] and glv.config['YOOKASSA_TOKEN']:
+    Configuration.configure(glv.config['YOOKASSA_SHOPID'], glv.config['YOOKASSA_TOKEN'])
+
 async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str) -> dict:
     good = goods.get(callback)
     resp = Payment.create({
@@ -29,7 +28,7 @@ async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str
             },
             "items": [
                 {
-                    "description": "Подписка на VPN сервис",
+                    "description": f"Подписка на VPN сервис: кол-во месяцев - {good['months']}",
                     "quantity": "1",
                     "amount": {
                         "value": good['price']['ru'],
@@ -40,12 +39,7 @@ async def create_payment(tg_id: int, callback: str, chat_id: int, lang_code: str
             ]
         }
         })
-    engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
-    async with engine.connect() as conn:
-        sql_q = insert(YPayments).values(tg_id=tg_id, payment_id=resp.id, chat_id=chat_id, callback=callback, lang=lang_code)
-        await conn.execute(sql_q)
-        await conn.commit()
-    await engine.dispose()
+    await add_yookassa_payment(tg_id, callback, chat_id, lang_code, resp.id)
     return {
         "url": resp.confirmation.confirmation_url,
         "amount": resp.amount.value

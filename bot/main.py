@@ -8,6 +8,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.utils.i18n import I18n, SimpleI18nMiddleware
 from aiogram.utils.callback_answer import CallbackAnswerMiddleware
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+from sqlalchemy.pool import NullPool
 from aiohttp import web 
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 
@@ -15,7 +16,6 @@ from handlers.commands import register_commands
 from handlers.messages import register_messages
 from handlers.callbacks import register_callbacks
 from app.routes import check_crypto_payment, check_yookassa_payment
-from middlewares import DbSessionMiddleware
 from db.base import Base
 import glv
 
@@ -45,9 +45,6 @@ async def init_models(engine):
 def setup_database():
     engine = create_async_engine(url=glv.config['DB_URL'], echo=True)
     asyncio.run(init_models(engine))
-    sessionmaker = async_sessionmaker(engine, expire_on_commit=False)
-    glv.dp.update.middleware(DbSessionMiddleware(session_pool=sessionmaker))
-    glv.dp.callback_query.middleware(CallbackAnswerMiddleware())
 
 def main():
     setup_routers()
@@ -66,7 +63,7 @@ def main():
 
     setup_application(app, glv.dp, bot=glv.bot)
 
-    web.run_app(app, host="0.0.0.0", port=glv.config['WEBHOOK_PORT'])
+    web.run_app(app, host="0.0.0.0", port=8080)
 
 if __name__ == "__main__":
     main()
