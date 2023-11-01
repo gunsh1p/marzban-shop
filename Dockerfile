@@ -3,4 +3,4 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN ["pip", "install", "-r", "requirements.txt"]
 COPY bot /app
-ENTRYPOINT ["sh", "-c", "pybabel compile -d locales -D bot && wait-for-it -s db:3306 -- echo 'Database is up' && python main.py"]
+ENTRYPOINT ["sh", "-c", "pybabel compile -d locales -D bot && wait-for-it -s $DB_ADDRESS:3306 -- echo 'Database is up' && python main.py"]

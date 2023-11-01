@@ -5,6 +5,7 @@ from aiogram import Bot, Dispatcher
 config = {
     'BOT_TOKEN': os.environ.get('BOT_TOKEN'),
     'SHOP_NAME': os.environ.get('SHOP_NAME'),
+    'PROTOCOLS': os.environ.get('PROTOCOLS', 'vless').split(),
     'TEST_PERIOD': os.environ.get('TEST_PERIOD', False) == 'true',
     'PERIOD_LIMIT': int(os.environ.get('PERIOD_LIMIT', 3)),
     'ABOUT': os.environ.get('ABOUT'),

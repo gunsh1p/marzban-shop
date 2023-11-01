@@ -4,9 +4,11 @@ services:
         build: .
         restart: always
         stop_signal: SIGINT
+        network_mode: host
         environment:
             BOT_TOKEN: ${BOT_TOKEN}
             SHOP_NAME: ${SHOP_NAME}
+            PROTOCOLS: ${PROTOCOLS}
             TEST_PERIOD: ${TEST_PERIOD}
             PERIOD_LIMIT: ${PERIOD_LIMIT}
             ABOUT: ${ABOUT}
@@ -26,8 +28,9 @@ services:
             PANEL_USER: ${PANEL_USER}
             PANEL_PASS: ${PANEL_PASS}
             WEBHOOK_URL: ${WEBHOOK_URL}
+            WEBHOOK_PORT: ${WEBHOOK_PORT}
         ports:
-            - "${WEBHOOK_PORT}:8080"
+            - "${WEBHOOK_PORT}:${WEBHOOK_PORT}"
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"

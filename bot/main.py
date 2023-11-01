@@ -63,7 +63,7 @@ def main():
 
     setup_application(app, glv.dp, bot=glv.bot)
 
-    web.run_app(app, host="0.0.0.0", port=8080)
+    web.run_app(app, host="0.0.0.0", port=glv.config['WEBHOOK_PORT'])
 
 if __name__ == "__main__":
     main()

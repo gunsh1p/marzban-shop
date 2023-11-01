@@ -1,4 +1,3 @@
-import uuid
 import time
 
 from marzpy import Marzban
@@ -7,9 +6,49 @@ from marzpy.api.user import User
 from db.methods import get_marzban_profile_db
 import glv
 
+PROTOCOLS = {
+    "vmess": [
+        {},
+        ["VMess TCP"]
+    ],
+    "vless": [
+        {
+            "flow": "xtls-rprx-vision"
+        },
+        ["VLESS TCP REALITY"]
+    ],
+    "trojan": [
+        {},
+        ["Trojan Websocket TLS"]
+    ],
+    "shadowsocks": [
+        {
+            "method": "chacha20-poly1305"
+        },
+        ["Shadowsocks TCP"]
+    ]
+}
+
+def get_protocols() -> dict:
+    proxies = {}
+    inbounds = {}
+    
+    for proto in glv.config['PROTOCOLS']:
+        l = proto.lower()
+        if l not in PROTOCOLS:
+            continue
+        proxies[l] = PROTOCOLS[l][0]
+        inbounds[l] = PROTOCOLS[l][1]
+    return {
+        "proxies": proxies,
+        "inbounds": inbounds
+    }
+
+panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
+mytoken = panel.get_token()
+ps = get_protocols()
+
 def check_if_user_exists(name: str) -> bool:
-    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
-    mytoken = panel.get_token()
     try:
         panel.get_user(name, mytoken)
         return True
@@ -17,16 +56,12 @@ def check_if_user_exists(name: str) -> bool:
         return False
 
 async def get_marzban_profile(tg_id: int) -> User:
-    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
     result = await get_marzban_profile_db(tg_id)
     if not check_if_user_exists(result.vpn_id):
         return None
-    mytoken = panel.get_token()
     return panel.get_user(result.vpn_id, mytoken)
 
 def generate_test_subscription(username: str) -> User:
-    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
-    mytoken = panel.get_token()
     if check_if_user_exists(username):
         user = panel.get_user(username, mytoken)
         user.status = 'active'
@@ -38,15 +73,8 @@ def generate_test_subscription(username: str) -> User:
     else:
         user = User(
             username=username,
-            proxies={
-                "vless": {
-                    "id": str(uuid.uuid4()),
-                    "flow": "xtls-rprx-vision"
-                },
-            },
-            inbounds={
-                "vless": ["VLESS TCP REALITY"]
-            },
+            proxies=ps["proxies"],
+            inbounds=ps["inbounds"],
             expire=get_test_subscription(glv.config['PERIOD_LIMIT']),
             data_limit=0,
             data_limit_reset_strategy="no_reset",
@@ -55,8 +83,6 @@ def generate_test_subscription(username: str) -> User:
     return result
 
 def generate_marzban_subscription(username: str, good) -> User:
-    panel = Marzban(glv.config['PANEL_USER'], glv.config['PANEL_PASS'], glv.config['PANEL_HOST'])
-    mytoken = panel.get_token()
     if check_if_user_exists(username):
         user = panel.get_user(username, mytoken)
         user.status = 'active'
@@ -67,20 +93,13 @@ def generate_marzban_subscription(username: str, good) -> User:
         result = panel.modify_user(username, mytoken, user)
     else:
         user = User(
-                username=username,
-                proxies={
-                    "vless": {
-                        "id": str(uuid.uuid4()),
-                        "flow": "xtls-rprx-vision"
-                    },
-                },
-                inbounds={
-                    "vless": ["VLESS TCP REALITY"]
-                },
-                expire=get_subscription_end_date(good['months']),
-                data_limit=0,
-                data_limit_reset_strategy="no_reset",
-            )
+            username=username,
+            proxies=ps["proxies"],
+            inbounds=ps["inbounds"],
+            expire=get_subscription_end_date(good['months']),
+            data_limit=0,
+            data_limit_reset_strategy="no_reset",
+        )
         result = panel.add_user(user=user, token=mytoken)
     return result
 
