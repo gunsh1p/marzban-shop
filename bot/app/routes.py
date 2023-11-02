@@ -29,7 +29,6 @@ YOOKASSA_IPS = (
 
 async def check_crypto_payment(request: Request):
     client_ip = request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
-    logging.getLogger('aiohttp.client').info(client_ip)
     if client_ip not in ["91.227.144.54"]:
         return web.Response(status=403)
     data = await request.json()
@@ -56,7 +55,6 @@ async def check_crypto_payment(request: Request):
 
 async def check_yookassa_payment(request: Request):
     client_ip = request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
-    logging.getLogger('aiohttp.client').info(client_ip)
     f = True
     for subnet in YOOKASSA_IPS:
         if "/" in subnet:
