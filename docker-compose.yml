@@ -29,8 +29,6 @@ services:
             PANEL_PASS: ${PANEL_PASS}
             WEBHOOK_URL: ${WEBHOOK_URL}
             WEBHOOK_PORT: ${WEBHOOK_PORT}
-        ports:
-            - "${WEBHOOK_PORT}:${WEBHOOK_PORT}"
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"
