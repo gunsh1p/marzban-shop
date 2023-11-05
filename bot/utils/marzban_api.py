@@ -103,8 +103,8 @@ def generate_marzban_subscription(username: str, good) -> User:
         result = panel.add_user(user=user, token=mytoken)
     return result
 
-def get_test_subscription(days: int, additional= False) -> int:
-    return (0 if additional else int(time.time())) + 60 * 60 * 24 * days
+def get_test_subscription(hours: int, additional= False) -> int:
+    return (0 if additional else int(time.time())) + 60 * 60 * hours
 
 def get_subscription_end_date(months: int, additional = False) -> int:
     return (0 if additional else int(time.time())) + 60 * 60 * 24 * 30 * months
