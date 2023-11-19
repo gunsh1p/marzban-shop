@@ -28,7 +28,7 @@ async def profile(message: Message):
         await message.answer(_("You haven't the VPN profile. Just buy the subscription to join out family"), reply_markup=get_main_menu_keyboard())
         return
     await message.answer(_("You can find out more about your subscription by following this <a href=\"{link}\">link</a>").format(
-                        link=glv.config['PANEL_GLOBAL'] + user.subscription_url), 
+                        link=glv.config['PANEL_GLOBAL'] + user['subscription_url']), 
                         reply_markup=get_back_keyboard())
 
 @router.message(F.text == __("ℹ️Information"))
@@ -52,11 +52,11 @@ async def test_subscription(message: Message):
         return
     await message.answer(_("Wait, the test subscription is being generated"))
     result = await get_marzban_profile_db(message.from_user.id)
-    result = marzban_api.generate_test_subscription(result.vpn_id)
+    result = await marzban_api.generate_test_subscription(result.vpn_id)
     await update_test_subscription_state(message.from_user.id)
     await message.answer(
         _("Here is your test subscription <a href=\"{link}\">link</a>").format(
-            link=glv.config['PANEL_GLOBAL'] + result.subscription_url
+            link=glv.config['PANEL_GLOBAL'] + result['subscription_url']
         ),
         reply_markup=get_main_menu_keyboard()
     )

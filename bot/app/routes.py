@@ -40,11 +40,11 @@ async def check_crypto_payment(request: Request):
     if data['status'] in ['paid', 'paid_over']:
         good = goods.get(payment.callback)
         user = await get_marzban_profile_db(payment.tg_id)
-        result = marzban_api.generate_marzban_subscription(user.vpn_id, good)
+        result = await marzban_api.generate_marzban_subscription(user.vpn_id, good)
         text = get_i18n_string("Thank you for your purchase. For instructions on how to connect, please follow this <a href=\"{link}\">link</a>", payment.lang)
         await glv.bot.send_message(payment.chat_id,
             text.format(
-                link=glv.config['PANEL_GLOBAL'] + result.subscription_url
+                link=glv.config['PANEL_GLOBAL'] + result['subscription_url']
             ),
             reply_markup=get_main_menu_keyboard(payment.lang)
         )
@@ -74,11 +74,11 @@ async def check_yookassa_payment(request: Request):
     if data['status'] in ['succeeded']:
         good = goods.get(payment.callback)
         user = await get_marzban_profile_db(payment.tg_id)
-        result = marzban_api.generate_marzban_subscription(user.vpn_id, good)
+        result = await marzban_api.generate_marzban_subscription(user.vpn_id, good)
         text = get_i18n_string("Thank you for your purchase. For instructions on how to connect, please follow this <a href=\"{link}\">link</a>", payment.lang)
         await glv.bot.send_message(payment.chat_id,
             text.format(
-                link=glv.config['PANEL_GLOBAL'] + result.subscription_url
+                link=glv.config['PANEL_GLOBAL'] + result['subscription_url']
             ),
             reply_markup=get_main_menu_keyboard(payment.lang)
         )
