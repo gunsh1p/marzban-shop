@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import sys
 from pathlib import Path
@@ -33,7 +34,7 @@ def setup_middlewares():
     i18n_middleware = SimpleI18nMiddleware(i18n=i18n)
     i18n_middleware.setup(glv.dp)
 
-def main():
+async def main():
     setup_routers()
     setup_middlewares()
     glv.dp.startup.register(on_startup)
@@ -48,7 +49,7 @@ def main():
     webhook_requests_handler.register(app, path="/webhook")
 
     setup_application(app, glv.dp, bot=glv.bot)
-    web.run_app(app, host="0.0.0.0", port=glv.config['WEBHOOK_PORT'])
+    await web._run_app(app, host="0.0.0.0", port=glv.config['WEBHOOK_PORT'])
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
