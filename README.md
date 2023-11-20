@@ -69,30 +69,30 @@ docker compose up -d
 
 > You can set settings below using environment variables or placing them in `.env` file.
 
-| Variable        | Description                                                                                                                                                        |
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| BOT_TOKEN       | Telegram bot token obtained from BotFather                                                                                                                         |
-| SHOP_NAME       | Name of the VPN shop                                                                                                                                               |
-| TEST_PERIOD     | Availability of test period (bool: true or false)                                                                                                                  |
-| PERIOD_LIMIT    | Test period limit                                                                                                                                                  |
-| ABOUT           | Service information                                                                                                                                                |
-| RULES_LINK      | Link to service rules                                                                                                                                              |
-| SUPPORT_LINK    | Link to service support                                                                                                                                            |
-| YOOKASSA_TOKEN  | YooKassa's token                                                                                                                                                   |
-| YOOKASSA_SHOPID | YooKassa's shopId                                                                                                                                                  |
-| EMAIL           | Email for receipts                                                                                                                                                 |
-| CRYPTO_TOKEN    | Cryptomus token                                                                                                                                                    |
-| MERCHANT_UUID   | Cryptomus' Merchant UUID                                                                                                                                           |
-| DB_NAME         | Database name                                                                                                                                                      |
-| DB_USER         | Database username                                                                                                                                                  |
-| DB_PASS         | Database password                                                                                                                                                  |
-| DB_URL          | Url (like postgresql+psycopg://user:password@server/db) there user is DB_USER, password is DB_PASS, server is database IP (localhost by default) and db is DB_NAME |
-| PANEL_HOST      | URL to connect to the marzban panel (if installed on the same server as marzban-shop, specify localhost and port of the panel)                                     |
-| PANEL_GLOBAL    | URL to issue subscriptions (this parameter may be different from PANEL_HOST, more details [here](#difference-between-host-and-global))                             |
-| PANEL_USER      | Panel username                                                                                                                                                     |
-| PANEL_PASS      | Panel password                                                                                                                                                     |
-| WEBHOOK_URL     | Webhook adress (url) (more deteails [here](#about-webhook))                                                                                                        |
-| WEBHOOK_PORT    | Webhook port                                                                                                                                                       |
+| Variable        | Description |
+|-|-|
+| BOT_TOKEN | Telegram bot token obtained from BotFather |
+| SHOP_NAME | Name of the VPN shop |
+| TEST_PERIOD | Availability of test period (bool: true or false) |
+| PERIOD_LIMIT | Test period limit |
+| ABOUT | Service information |
+| RULES_LINK | Link to service rules |
+| SUPPORT_LINK | Link to service support |
+| YOOKASSA_TOKEN | YooKassa's token |
+| YOOKASSA_SHOPID | YooKassa's shopId |
+| EMAIL | Email for receipts |
+| CRYPTO_TOKEN | Cryptomus token |
+| MERCHANT_UUID | Cryptomus' Merchant UUID |
+| DB_NAME | Database name |
+| DB_USER | Database username |
+| DB_PASS | Database password |
+| DB_URL | Url (like postgresql+psycopg://user:password@server/db) there user is DB_USER, password is DB_PASS, server is database IP (localhost by default) and db is DB_NAME |
+| PANEL_HOST | URL to connect to the marzban panel (if installed on the same server as marzban-shop, specify localhost and port of the panel) |
+| PANEL_GLOBAL | URL to issue subscriptions (this parameter may be different from PANEL_HOST, more details [here](#difference-between-host-and-global)) |
+| PANEL_USER | Panel username |
+| PANEL_PASS | Panel password |
+| WEBHOOK_URL | Webhook adress (url) (more deteails [here](#about-webhook)) |
+| WEBHOOK_PORT | Webhook port |
 
 #### Difference between host and global
 
