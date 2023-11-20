@@ -12,13 +12,13 @@ from db.models import Base
 # access to the values within the .ini file in use.
 config = context.config
 
-config.set_main_option('sqlalchemy.url', f"mysql+pymysql://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASS')}@{os.environ.get('DB_ADDRESS')}:3306/{os.environ.get('DB_NAME')}")
-target_metadata = Base.metadata
-
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
+
+config.set_main_option('sqlalchemy.url', f"mysql+pymysql://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASS')}@{os.environ.get('DB_ADDRESS')}:3306/{os.environ.get('DB_NAME')}")
+target_metadata = Base.metadata
 
 # add your model's MetaData object here
 # for 'autogenerate' support
