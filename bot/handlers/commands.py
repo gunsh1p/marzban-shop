@@ -6,7 +6,6 @@ from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 
 from keyboards import get_main_menu_keyboard
-from db.methods import create_vpn_profile
 import glv
 
 router = Router(name="commands-router") 
@@ -15,7 +14,6 @@ router = Router(name="commands-router")
     Command("start")
 )
 async def start(message: Message):
-    await create_vpn_profile(message.from_user.id)
     text = _("Hello, {name}.\n\n🎉Welcome to {title}\n\n⬇️Select an action").format(
         name=message.from_user.first_name,
         title=glv.config.get('SHOP_NAME', 'VPN Shop')

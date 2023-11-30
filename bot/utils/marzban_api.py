@@ -1,7 +1,6 @@
 import time
 import aiohttp
 import requests
-import logging
 
 from db.methods import get_marzban_profile_db
 import glv
