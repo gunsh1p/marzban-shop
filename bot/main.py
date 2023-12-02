@@ -25,7 +25,7 @@ logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
 async def on_startup(bot: Bot):
     await bot.set_webhook(f"{glv.config['WEBHOOK_URL']}/webhook")
-    await asyncio.create_task(register())
+    asyncio.create_task(register())
 
 def setup_routers():
     register_commands(glv.dp)
