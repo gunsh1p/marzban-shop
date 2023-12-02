@@ -12,7 +12,9 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_applicati
 from handlers.commands import register_commands
 from handlers.messages import register_messages
 from handlers.callbacks import register_callbacks
+from middlewares.db_check import DBCheck
 from app.routes import check_crypto_payment, check_yookassa_payment
+from tasks import register
 import glv
 
 glv.bot = Bot(glv.config['BOT_TOKEN'], parse_mode=enums.ParseMode.HTML)
@@ -23,6 +25,7 @@ logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
 async def on_startup(bot: Bot):
     await bot.set_webhook(f"{glv.config['WEBHOOK_URL']}/webhook")
+    asyncio.create_task(register())
 
 def setup_routers():
     register_commands(glv.dp)
@@ -33,6 +36,7 @@ def setup_middlewares():
     i18n = I18n(path=Path(__file__).parent / 'locales', default_locale='en', domain='bot')
     i18n_middleware = SimpleI18nMiddleware(i18n=i18n)
     i18n_middleware.setup(glv.dp)
+    glv.dp.message.middleware(DBCheck())
 
 async def main():
     setup_routers()
