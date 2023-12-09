@@ -11,7 +11,7 @@ config = {
     'ABOUT': os.environ.get('ABOUT'),
     'RULES_LINK': os.environ.get('RULES_LINK'),
     'SUPPORT_LINK': os.environ.get('SUPPORT_LINK'),
-    'DB_URL': f"mysql+asyncmy://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASS')}@{os.environ.get('DB_ADDRESS')}:3306/{os.environ.get('DB_NAME')}",
+    'DB_URL': f"mysql+asyncmy://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASS')}@{os.environ.get('DB_ADDRESS')}:3406/{os.environ.get('DB_NAME')}",
     'YOOKASSA_TOKEN': os.environ.get('YOOKASSA_TOKEN'),
     'YOOKASSA_SHOPID': os.environ.get('YOOKASSA_SHOPID'),
     'EMAIL': os.environ.get('EMAIL'),
@@ -22,7 +22,7 @@ config = {
     'PANEL_USER': os.environ.get('PANEL_USER'),
     'PANEL_PASS': os.environ.get('PANEL_PASS'),
     'WEBHOOK_URL': os.environ.get('WEBHOOK_URL'),
-    'WEBHOOK_PORT': os.environ.get('WEBHOOK_PORT'),
+    'WEBHOOK_PORT': int(os.environ.get('WEBHOOK_PORT')),
 }
 
 bot: Bot = None
