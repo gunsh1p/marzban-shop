@@ -22,7 +22,7 @@ PROTOCOLS = {
     ],
     "shadowsocks": [
         {
-            "method": "chacha20-poly1305"
+            "method": "chacha20-ietf-poly1305"
         },
         ["Shadowsocks TCP"]
     ]
