@@ -28,7 +28,7 @@ YOOKASSA_IPS = (
 )
 
 async def check_crypto_payment(request: Request):
-    client_ip = request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
+    client_ip = request.headers.get('CF-Connecting-IP') or request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
     if client_ip not in ["91.227.144.54"]:
         return web.Response(status=403)
     data = await request.json()
@@ -54,7 +54,7 @@ async def check_crypto_payment(request: Request):
     return web.Response()
 
 async def check_yookassa_payment(request: Request):
-    client_ip = request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
+    client_ip = request.headers.get('CF-Connecting-IP') or request.headers.get('X-Real-IP') or request.headers.get('X-Forwarded-For') or request.remote
     f = True
     for subnet in YOOKASSA_IPS:
         if "/" in subnet:
