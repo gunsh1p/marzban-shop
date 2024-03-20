@@ -9,3 +9,7 @@ def check(data, key) -> bool:
     h = hashlib.md5((b64encode(data.encode('utf-8')).decode('utf-8') + key).encode('utf-8')).hexdigest()
     
     return sign == h
+
+def get_sign(data: dict, key: str) -> str:
+    data = b64encode(json.dumps(data).encode('utf-8')).decode('utf-8')
+    return hashlib.md5(f'{data}{key}'.encode('utf-8')).hexdigest() 

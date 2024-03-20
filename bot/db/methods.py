@@ -45,7 +45,7 @@ async def add_yookassa_payment(tg_id: int, callback: str, chat_id: int, lang_cod
 
 async def add_cryptomus_payment(tg_id: int, callback: str, chat_id: int, lang_code: str, data) -> dict:
     async with engine.connect() as conn:
-        sql_q = insert(CPayments).values(tg_id=tg_id, payment_uuid=data.uuid, order_id=data.order_id, chat_id=chat_id, callback=callback, lang=lang_code)
+        sql_q = insert(CPayments).values(tg_id=tg_id, payment_uuid=data['order_id'], order_id=data['order_id'], chat_id=chat_id, callback=callback, lang=lang_code)
         await conn.execute(sql_q)
         await conn.commit()
 
