@@ -3,46 +3,30 @@ services:
     bot:
         build: .
         restart: always
-        stop_signal: SIGINT
-        network_mode: host
-        environment:
-            BOT_TOKEN: ${BOT_TOKEN}
-            SHOP_NAME: ${SHOP_NAME}
-            PROTOCOLS: ${PROTOCOLS}
-            TEST_PERIOD: ${TEST_PERIOD}
-            PERIOD_LIMIT: ${PERIOD_LIMIT}
-            ABOUT: ${ABOUT}
-            RULES_LINK: ${RULES_LINK}
-            SUPPORT_LINK: ${SUPPORT_LINK}
-            YOOKASSA_TOKEN: ${YOOKASSA_TOKEN}
-            YOOKASSA_SHOPID: ${YOOKASSA_SHOPID}
-            EMAIL: ${EMAIL}
-            CRYPTO_TOKEN: ${CRYPTO_TOKEN}
-            MERCHANT_UUID: ${MERCHANT_UUID}
-            DB_NAME: ${DB_NAME}
-            DB_USER: ${DB_USER}
-            DB_PASS: ${DB_PASS}
-            DB_ADDRESS: ${DB_ADDRESS}
-            PANEL_HOST: ${PANEL_HOST}
-            PANEL_GLOBAL: ${PANEL_GLOBAL}
-            PANEL_USER: ${PANEL_USER}
-            PANEL_PASS: ${PANEL_PASS}
-            WEBHOOK_URL: ${WEBHOOK_URL}
-            WEBHOOK_PORT: ${WEBHOOK_PORT}
         volumes:
-            - "./goods.json:/app/goods.json"
-            - "./locales:/app/locales"
+            - "./config.json:/app/config.json"
+        ports:
+          - 8777:8000
         depends_on:
             - db
+            - redis
     db:
-        image: mariadb:latest
+        image: mariadb:10.6.17
         restart: always
         environment:
-            MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS}
-            MARIADB_DATABASE: ${DB_NAME}
-            MARIADB_USER: ${DB_USER}
-            MARIADB_PASSWORD: ${DB_PASS}
-        ports:
-            - 3406:3306
+            MARIADB_ROOT_PASSWORD: qwerty123
+            MARIADB_DATABASE: marzban-shop
+            MARIADB_USER: shop
+            MARIADB_PASSWORD: shop123
         volumes:
             - "./data/db:/var/lib/mysql"
+    adminer:
+        image: adminer:latest
+        restart: always
+        ports:
+          - 8770:8080
+        depends_on:
+          - db
+    redis:
+        image: redis:latest
+        restart: always

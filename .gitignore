@@ -164,3 +164,4 @@ data/pgadmin
 
 goods.json
 test_req_webhook.py
+config.json
