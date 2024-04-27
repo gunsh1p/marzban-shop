@@ -7,38 +7,15 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.redis import RedisStorage
 from aiohttp import web 
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
-from tortoise import Tortoise
 
 from config import load_config, config
+from db.setup import setup_db
 
 bot: Bot = Bot(config.TOKEN, parse_mode=ParseMode.HTML)
 storage = RedisStorage.from_url(config.REDIS_URL)
 dp: Dispatcher = Dispatcher(
     storage=storage
 )
-
-async def setup_db():
-    CONFIG_ORM = {
-        "connections": {
-            "postgre": {
-                "engine": "tortoise.backends.asyncmy",
-                "credentials": {
-                    "host": config.DB_HOST,
-                    "port": config.DB_PORT,
-                    "database": config.DB_NAME,
-                    "user": config.DB_USER,
-                    "password": config.DB_PASS,
-                }
-            }
-        },
-        "apps": {
-            "default": {"models": ["db.models"], "default_connection": "postgre"}
-        }
-    }
-    await Tortoise.init(
-        CONFIG_ORM
-    )
-    # await Tortoise.generate_schemas(safe=True)
 
 async def add_admin():
     
@@ -59,6 +36,7 @@ def setup_handlers():
 async def main():
     load_config()
     asyncio.gather(setup_db())
+    await add_admin()
     dp.startup.register(on_startup)
     setup_handlers()
     setup_middlewares()
