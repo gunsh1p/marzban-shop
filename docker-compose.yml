@@ -8,25 +8,7 @@ services:
         ports:
           - 8777:8000
         depends_on:
-            - db
             - redis
-    db:
-        image: mariadb:10.6.17
-        restart: always
-        environment:
-            MARIADB_ROOT_PASSWORD: qwerty123
-            MARIADB_DATABASE: marzban-shop
-            MARIADB_USER: shop
-            MARIADB_PASSWORD: shop123
-        volumes:
-            - "./data/db:/var/lib/mysql"
-    adminer:
-        image: adminer:latest
-        restart: always
-        ports:
-          - 8770:8080
-        depends_on:
-          - db
     redis:
         image: redis:latest
         restart: always

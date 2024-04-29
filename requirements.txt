@@ -4,3 +4,4 @@ aerich
 requests
 yookassa
 aioschedule
+redis

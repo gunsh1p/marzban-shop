@@ -1,13 +1,11 @@
 from tortoise import Tortoise
 
-from .config import load_config, config
-
-load_config()
+from .config import config
 
 CONFIG_ORM = {
     "connections": {
-        "mysql": {
-            "engine": "tortoise.backends.asyncmy",
+        "default": {
+            "engine": "tortoise.backends.mysql",
             "credentials": {
                 "host": config.DB_HOST,
                 "port": config.DB_PORT,
@@ -18,11 +16,9 @@ CONFIG_ORM = {
         }
     },
     "apps": {
-        "default": {"models": ["db.models"], "default_connection": "mysql"}
+        "default": {
+            "models": ["db.models", "aerich.models"], 
+            "default_connection": "default"
+        }
     }
 }
-
-async def setup_db() -> None:
-    await Tortoise.init(
-        CONFIG_ORM
-    )

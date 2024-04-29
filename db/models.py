@@ -30,7 +30,7 @@ class TestSubscription(Model):
 
 class Admin(Model):
     id = fields.IntField(pk=True)
-    username = fields.CharField(max_length=64)
+    username = fields.CharField(max_length=64, unique=True)
     password = fields.CharField(max_length=32)
     
     def __str__(self) -> str:
