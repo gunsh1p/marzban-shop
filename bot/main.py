@@ -3,6 +3,7 @@ import logging
 import sys
 
 from aiogram import Dispatcher, Bot
+from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.redis import RedisStorage
 from aiohttp import web 
@@ -17,7 +18,10 @@ from handlers.user import (
     start
 )
 
-bot: Bot = Bot(config.BOT_TOKEN, parse_mode=ParseMode.HTML)
+bot: Bot = Bot(
+    config.BOT_TOKEN,
+    default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+)
 storage = RedisStorage.from_url('redis://redis:6379/0')
 dp: Dispatcher = Dispatcher(
     storage=storage
