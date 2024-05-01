@@ -5,4 +5,8 @@ requests
 yookassa
 aioschedule
 jinja2
+uvicorn[standard]
+gunicorn
+fastapi
+python-multipart
 redis

@@ -1,7 +1,9 @@
 version: '3.8'
 services:
     bot:
-        build: .
+        build: 
+            context: .
+            dockerfile: bot.Dockerfile
         restart: always
         volumes:
             - "./config.json:/app/config.json"
@@ -12,3 +14,12 @@ services:
     redis:
         image: redis:latest
         restart: always
+    web:
+        build: 
+            context: .
+            dockerfile: web.Dockerfile
+        restart: always
+        volumes:
+            - "./config.json:/app/config.json"
+        ports:
+          - 8778:8080
