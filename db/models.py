@@ -28,6 +28,32 @@ class TestSubscription(Model):
     def __str__(self) -> str:
         return f"Test subscription {self.id}"
 
+class Panel(Model):
+    id = fields.IntField(pk=True)
+    title = fields.CharField(max_length=64)
+    username = fields.CharField(max_length=64)
+    password = fields.CharField(max_length=64)
+
+class Inbound(Model):
+    id = fields.IntField(pk=True)
+    title = fields.CharField(max_length=64)
+    panel = fields.ForeignKeyField('default.Panel')
+
+class Tariff(Model):
+    id = fields.IntField(pk=True)
+    title = fields.CharField(max_length=64)
+    description = fields.TextField()
+    price = fields.BigIntField()
+    period = fields.IntField()
+    panel = fields.ForeignKeyField('default.Panel')
+    inbounds = fields.ManyToManyField('default.Inbound', related_name='inbounds', on_delete=fields.CASCADE)
+    
+class Buy(Model):
+    id = fields.IntField(pk=True)
+    user = fields.ForeignKeyField('default.User', on_delete=fields.CASCADE, null=True)
+    tariff = fields.ForeignKeyField('default.Tariff', on_delete=fields.CASCADE, null=True)
+    time = fields.DatetimeField(auto_now_add=True)
+
 class Admin(Model):
     id = fields.IntField(pk=True)
     username = fields.CharField(max_length=64, unique=True)

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Statistics{% endblock %}
+{% block content %}
+{% with statistics=1 %}
+    {% include "header.html" %}
+{% endwith %}
+<div class="text-center">
+    <select class="form-select" aria-label="Default select example">
+        <option value="1">Buys</option>
+        <option value="2">Online</option>
+        <option value="3">New users</option>
+    </select>   
+</div>
+<canvas id="statistics_chart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    let ctx = document.querySelector('#statistics_chart');
+
+    const labels = ["01", "02", "03", "04", "05", "06", "07"]
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Buys',
+            data: [65, 59, 80, 81, 0, 0, 40],
+            fill: false,
+            borderColor: 'rgb(13, 110, 253)',
+            tension: 0.1
+        }]
+    };
+
+    new Chart(ctx, {
+        type: 'line',
+        data: data
+    });
+</script>
+{% endblock %}

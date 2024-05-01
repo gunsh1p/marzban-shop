@@ -1,6 +1,6 @@
-from typing import Union, Annotated
+from typing import Union
 
-from fastapi import FastAPI, APIRouter, Request, Response, Form
+from fastapi import FastAPI, APIRouter, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
@@ -17,7 +17,7 @@ async def get_auth_page(request: Request):
     )
 
 @router.post('/', response_class=Union[HTMLResponse, RedirectResponse])
-async def check_auth(request: Request, username: str = Form(default = ""), password: str = Form(default="")):
+async def check_auth(request: Request, username: str = Form(default = ""), password: str = Form(default=""), remember: str = Form(default="")):
     if not (username or password):
         context = {
             'error': 'Invalid data!'
@@ -42,11 +42,12 @@ async def check_auth(request: Request, username: str = Form(default = ""), passw
             context=context
         )
     response = RedirectResponse(
-        url="/dashboard/",
+        url="/statistics/",
         status_code=302
     )
-    response.set_cookie(key='username', value=username)
-    response.set_cookie(key='password', value=hashed_password)
+    max_age = None if remember == '1' else 3600 * 24
+    response.set_cookie(key='username', value=username, httponly=True, max_age=max_age)
+    response.set_cookie(key='password', value=hashed_password, httponly=True, max_age=max_age)
     return response
 
 def register_router(app: FastAPI) -> None:

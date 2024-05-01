@@ -5,7 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 
 from db.setup import CONFIG_ORM
-from routers import auth
+from routers import (
+    auth,
+    statistics
+)
 from middlewares.check_auth import CheckAuthMiddleware
 
 
@@ -16,16 +19,10 @@ async def setup_db():
 
 def setup_middlewares(app: FastAPI):
     app.middleware('http')(CheckAuthMiddleware())
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=['*'],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
     
 def setup_routers(app: FastAPI):
     auth.register_router(app)
+    statistics.register_router(app)
 
 def get_app() -> FastAPI:
     app = FastAPI()
