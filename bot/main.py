@@ -43,7 +43,7 @@ async def setup_db():
     )
 
 async def add_admin():
-    if config.WEB_LOGIN == None or config.WEB_PASS == None:
+    if config.WEB_LOGIN is None or config.WEB_PASS is None:
         return
     is_existed: bool = (await Admin.get_or_none(username=config.WEB_LOGIN)) is not None
     if is_existed:
@@ -55,8 +55,6 @@ async def add_admin():
 
 
 async def on_startup(bot: Bot):
-    # delete old webhook
-    await bot.delete_webhook()
     # setup new webhook
     await bot.set_webhook(f"{config.WEBHOOK_URL}/webhook")
 

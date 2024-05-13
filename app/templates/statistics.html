@@ -16,21 +16,71 @@
 <script>
     let ctx = document.querySelector('#statistics_chart');
 
-    const labels = ["01", "02", "03", "04", "05", "06", "07"]
-    const data = {
-        labels: labels,
+    let data = {
+        labels: [],
         datasets: [{
-            label: 'Buys',
-            data: [65, 59, 80, 81, 0, 0, 40],
+            label: 'Last 7 days',
+            data: [],
             fill: false,
             borderColor: 'rgb(13, 110, 253)',
-            tension: 0.1
+            tension: 0.3
         }]
     };
 
-    new Chart(ctx, {
+
+    let chart = new Chart(ctx, {
         type: 'line',
         data: data
     });
+
+    function date_to_str(date) {
+        let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+        let month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(date);
+        let day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+        return `${day}-${month}-${year}`
+    }
+
+    async function get_buys() {
+        let end_date = new Date();
+        end_date.setTime(end_date.getTime() + 24 * 3600 * 1000);
+        let offset = 7 * 24 * 3600 * 1000;
+        let start_date = new Date();
+        start_date.setTime(end_date.getTime() - offset);
+
+        let url = new URL("/statistics/buys", window.location.origin);
+        url.searchParams.set('start', date_to_str(start_date));
+        url.searchParams.set('end', date_to_str(end_date));
+        
+        let resp = await fetch(url);
+        data = await resp.json();
+        let buys = data['data'];
+        
+        let labels = [];
+
+        for (let i = 7; i >= 1; i--){
+            let d_tmp = new Date();
+            d_tmp.setTime(end_date.getTime() - i * 24 * 3600 * 1000);
+            labels.push(date_to_str(d_tmp));
+        }
+
+        data = new Array(7).fill(0);
+
+        for (let i = 0; i < 7; i++){
+            for (val of buys) {
+                if (val['time'] == labels[i]){
+                    data[i]++;
+                }
+            }
+        }
+
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = data;
+
+        console.log('ok');
+
+        chart.update();
+    }
+
+    get_buys();
 </script>
 {% endblock %}

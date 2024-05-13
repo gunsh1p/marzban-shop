@@ -1,5 +1,6 @@
 from tortoise.models import Model
 from tortoise import fields
+from tortoise.fields.relational import _NoneAwaitable
 
 class User(Model):
     id = fields.IntField(pk=True)
@@ -53,6 +54,18 @@ class Buy(Model):
     user = fields.ForeignKeyField('default.User', on_delete=fields.CASCADE, null=True)
     tariff = fields.ForeignKeyField('default.Tariff', on_delete=fields.CASCADE, null=True)
     time = fields.DatetimeField(auto_now_add=True)
+
+    def to_dict(self) -> dict:
+        user = self.user.id if not isinstance(self.user, _NoneAwaitable) else None
+        tariff = self.tariff.id if not isinstance(self.tariff, _NoneAwaitable) else None
+        date = self.time.strftime('%d-%m-%Y')
+        content = {
+            "id": self.id,
+            "user": user,
+            "tariff": tariff,
+            "time": date
+        }
+        return content
 
 class Admin(Model):
     id = fields.IntField(pk=True)
