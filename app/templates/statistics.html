@@ -5,10 +5,10 @@
     {% include "header.html" %}
 {% endwith %}
 <div class="text-center">
-    <select class="form-select" aria-label="Default select example">
-        <option value="1">Buys</option>
-        <option value="2">Online</option>
-        <option value="3">New users</option>
+    <select class="form-select" aria-label="Select type" id="statType">
+        <option value="buys">Buys</option>
+        <option value="online">Online</option>
+        <option value="new_users">New users</option>
     </select>   
 </div>
 <canvas id="statistics_chart"></canvas>
@@ -40,6 +40,8 @@
         data: data
     });
 
+    let statType = document.querySelector('#statType');
+
     let startDate = document.querySelector('#startDate');
     let endDate = document.querySelector('#endDate');
 
@@ -66,7 +68,8 @@
         let start_date = startDate.valueAsDate;
         let diffDays = Math.ceil(Math.abs(end_date - start_date) / (1000 * 60 * 60 * 24));
 
-        let url = new URL("/statistics/buys", window.location.origin);
+        stat_type = statType.value;
+        let url = new URL(`/statistics/${stat_type}`, window.location.origin);
         url.searchParams.set('start', date_to_str(start_date));
         url.searchParams.set('end', date_to_str(end_date));
         
