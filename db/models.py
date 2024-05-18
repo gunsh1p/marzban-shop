@@ -14,11 +14,34 @@ class User(Model):
 
     def __str__(self) -> str:
         return f"{self.id}. {self.username} - {self.lang} (user)"
+    
+    def to_dict(self) -> dict:
+        join_date = self.join_date.strftime('%d-%m-%Y')
+        content = {
+            "id": self.id,
+            "telegram_id": self.tid,
+            "username": self.username,
+            "email": self.email,
+            "language": self.lang,
+            "status": self.status,
+            "balance": round(self.balance, 2),
+            "time": join_date
+        }
+        return content
 
 class Online(Model):
     id = fields.IntField(pk=True)
     user = fields.ForeignKeyField('default.User')
     time = fields.DatetimeField(auto_now_add=True)
+    
+    def to_dict(self) -> dict:
+        date = self.time.strftime('%d-%m-%Y')
+        content = {
+            "id": self.id,
+            "user": self.user,
+            "time": date
+        }
+        return content
 
 class Referral(Model):
     id = fields.IntField(pk=True)
