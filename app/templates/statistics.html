@@ -28,7 +28,7 @@
     let data = {
         labels: [],
         datasets: [{
-            label: 'Statistics',
+            label: 'Buys',
             data: [],
             fill: false,
             borderColor: 'rgb(13, 110, 253)',
@@ -44,6 +44,11 @@
 
     let startDate = document.querySelector('#startDate');
     let endDate = document.querySelector('#endDate');
+
+    function capitalize(s)
+    {
+        return s && s[0].toUpperCase() + s.slice(1);
+    }
 
     function set_todays_dates(){
         let end_date = new Date();
@@ -95,6 +100,7 @@
         }
 
         chart.data.labels = labels;
+        chart.data.datasets[0].label = capitalize(stat_type).replace('_', ' ');
         chart.data.datasets[0].data = data;
 
         chart.update();
