@@ -12,61 +12,79 @@
     </select>   
 </div>
 <canvas id="statistics_chart"></canvas>
+<div class="row justify-content-center">
+    <div class="col-lg-3 col-sm-6">
+        <label for="startDate">Start</label>
+        <input id="startDate" class="form-control" type="date" />
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <label for="endDate">End</label>
+        <input id="endDate" class="form-control" type="date" />
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     let ctx = document.querySelector('#statistics_chart');
-
     let data = {
         labels: [],
         datasets: [{
-            label: 'Last 7 days',
+            label: 'Statistics',
             data: [],
             fill: false,
             borderColor: 'rgb(13, 110, 253)',
             tension: 0.3
         }]
     };
-
-
     let chart = new Chart(ctx, {
         type: 'line',
         data: data
     });
 
+    let startDate = document.querySelector('#startDate');
+    let endDate = document.querySelector('#endDate');
+
+    function set_todays_dates(){
+        let end_date = new Date();
+        end_date.setTime(end_date.getTime());
+        let offset = 6 * 24 * 3600 * 1000;
+        let start_date = new Date();
+        start_date.setTime(end_date.getTime() - offset);
+        startDate.valueAsDate = start_date;
+        endDate.valueAsDate = end_date;
+    }
+
     function date_to_str(date) {
         let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
         let month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(date);
         let day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
-        return `${day}-${month}-${year}`
+        return `${day}-${month}-${year}`;
     }
 
-    async function get_buys() {
-        let end_date = new Date();
+    async function get_info() {
+        let end_date = endDate.valueAsDate;
         end_date.setTime(end_date.getTime() + 24 * 3600 * 1000);
-        let offset = 7 * 24 * 3600 * 1000;
-        let start_date = new Date();
-        start_date.setTime(end_date.getTime() - offset);
+        let start_date = startDate.valueAsDate;
+        let diffDays = Math.ceil(Math.abs(end_date - start_date) / (1000 * 60 * 60 * 24));
 
         let url = new URL("/statistics/buys", window.location.origin);
         url.searchParams.set('start', date_to_str(start_date));
         url.searchParams.set('end', date_to_str(end_date));
         
         let resp = await fetch(url);
-        data = await resp.json();
-        let buys = data['data'];
+        let stats = (await resp.json())['data'];
         
         let labels = [];
 
-        for (let i = 7; i >= 1; i--){
+        for (let i = diffDays; i >= 1; i--){
             let d_tmp = new Date();
             d_tmp.setTime(end_date.getTime() - i * 24 * 3600 * 1000);
             labels.push(date_to_str(d_tmp));
         }
 
-        data = new Array(7).fill(0);
+        data = new Array(diffDays).fill(0);
 
-        for (let i = 0; i < 7; i++){
-            for (val of buys) {
+        for (let i = 0; i < diffDays; i++){
+            for (stat of stats) {
                 if (val['time'] == labels[i]){
                     data[i]++;
                 }
@@ -76,11 +94,10 @@
         chart.data.labels = labels;
         chart.data.datasets[0].data = data;
 
-        console.log('ok');
-
         chart.update();
     }
 
-    get_buys();
+    set_todays_dates();
+    get_info();
 </script>
 {% endblock %}
