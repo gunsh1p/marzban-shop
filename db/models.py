@@ -9,10 +9,16 @@ class User(Model):
     email = fields.CharField(max_length=256)
     lang = fields.CharField(max_length=5, default="none")
     status = fields.CharField(max_length=10, default="active")
-    balance = fields.BigIntField(default=0)
+    balance = fields.FloatField(default=0)
+    join_date = fields.DatetimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return f"{self.id}. {self.username} - {self.lang} (user)"
+
+class Online(Model):
+    id = fields.IntField(pk=True)
+    user = fields.ForeignKeyField('default.User')
+    time = fields.DatetimeField(auto_now_add=True)
 
 class Referral(Model):
     id = fields.IntField(pk=True)
@@ -47,7 +53,7 @@ class Tariff(Model):
     price = fields.BigIntField()
     period = fields.IntField()
     panel = fields.ForeignKeyField('default.Panel')
-    inbounds = fields.ManyToManyField('default.Inbound', related_name='inbounds', on_delete=fields.CASCADE)
+    inbounds = fields.ManyToManyField('default.Inbound', on_delete=fields.CASCADE)
     
 class Buy(Model):
     id = fields.IntField(pk=True)

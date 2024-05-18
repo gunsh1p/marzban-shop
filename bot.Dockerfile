@@ -7,4 +7,4 @@ COPY migrations /app/migrations
 COPY db /app/db
 COPY utils /app/utils
 COPY pyproject.toml /app/pyproject.toml
-ENTRYPOINT ["bash", "-c", "aerich upgrade; python main.py"]
+ENTRYPOINT ["python", "main.py"]

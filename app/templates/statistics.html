@@ -88,7 +88,7 @@
 
         for (let i = 0; i < diffDays; i++){
             for (stat of stats) {
-                if (val['time'] == labels[i]){
+                if (stat['time'] == labels[i]){
                     data[i]++;
                 }
             }
@@ -102,5 +102,9 @@
 
     set_todays_dates();
     get_info();
+
+    statType.addEventListener('change', get_info);
+    startDate.addEventListener('change', get_info);
+    endDate.addEventListener('change', get_info);
 </script>
 {% endblock %}
