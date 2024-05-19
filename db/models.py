@@ -1,6 +1,7 @@
 from tortoise.models import Model
 from tortoise import fields
 from tortoise.fields.relational import _NoneAwaitable
+from tortoise.queryset import QuerySet
 
 class User(Model):
     id = fields.IntField(pk=True)
@@ -109,9 +110,31 @@ class Language(Model):
     title = fields.CharField(max_length=64, unique=True)
     code = fields.CharField(max_length=5, unique=True)
 
+    def __str__(self) -> str:
+        return f'{self.id}. {self.title} ({self.code})'
+
+    def to_dict(self) -> dict:
+        content = {
+            'id': self.id,
+            'title': self.title,
+            'code': self.code
+        }
+        return content
+
 class Scene(Model):
     id = fields.IntField(pk=True)
     language = fields.ForeignKeyField('default.Language')
     title = fields.CharField(max_length=64)
     action = fields.CharField(max_length=64)
     text = fields.TextField()
+
+    async def to_dict(self) -> dict:
+        lang: Language = await self.language.all()
+        content = {
+            'id': self.id,
+            'language': lang.code,
+            'title': self.title,
+            'action': self.action,
+            'text': self.text
+        }
+        return content

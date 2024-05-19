@@ -1,13 +1,13 @@
 import asyncio
 
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 
 from db.setup import CONFIG_ORM
 from routers import (
     auth,
-    statistics
+    statistics,
+    languages
 )
 from middlewares.check_auth import CheckAuthMiddleware
 
@@ -23,6 +23,7 @@ def setup_middlewares(app: FastAPI):
 def setup_routers(app: FastAPI):
     auth.register_router(app)
     statistics.register_router(app)
+    languages.register_router(app)
 
 def get_app() -> FastAPI:
     app = FastAPI()

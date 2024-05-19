@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Languages{% endblock %}
+{% block content %}
+{% with others=1 %}
+    {% include "header.html" %}
+{% endwith %}
+    <form class="row g-3 justify-content-center" id="addLanguageForm">
+        <div class="col-auto">
+            <label for="languageTitle" class="visually-hidden">Language title</label>
+            <input type="text" class="form-control" id="languageTitle" name="title" placeholder="Language title">
+        </div>
+        <div class="col-auto">
+            <label for="languageCode" class="visually-hidden">Langiage code</label>
+            <input type="text" class="form-control" id="languageCode" name="code" placeholder="Language code">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-outline-primary mb-3" id="addLanguage">Add language</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <input class="form-control" list="datalistOptions" id="languagesDatalist" placeholder="Type to search..." name="title">
+        <datalist id="datalistOptions"></datalist>
+    </div>
+    <div class="text-center scenes"></div>
+    <script>
+        let l_input = document.querySelector('#languagesDatalist');
+        let add_scene = null;
+        let languages = document.querySelector('#datalistOptions');
+        let scenes = document.querySelector('.scenes');
+
+        async function load_languages() {
+            let url = new URL(`/languages/get`, window.location.origin);
+
+            let resp = await fetch(url);
+            let data = (await resp.json())['data'];
+            
+            languages.innerHTML = '';
+
+            for (let lang of data){
+                let el = document.createElement('option');
+                el.setAttribute('value', lang['title']);
+                el.textContent = lang['code'];
+                languages.appendChild(el);
+            }
+        }
+
+        let langForm = document.querySelector('#addLanguageForm');
+        let languageTitle = document.querySelector('#languageTitle');
+        let languageCode = document.querySelector('#languageCode');
+
+        async function addLangSubmit(e) {
+            e.preventDefault();
+            let url = new URL(`/languages/add`, window.location.origin);
+
+            const formData = new URLSearchParams(new FormData(langForm));
+
+            let resp = await fetch(url, {
+                method: 'POST',
+                body: formData
+            });
+            let data = (await resp.json())['data'];
+
+            languageTitle.value = '';
+            languageCode.value = '';
+
+            let el = document.createElement('option');
+            el.setAttribute('value', data['title']);
+            el.textContent = data['code'];
+            languages.appendChild(el);
+        }
+
+        langForm.addEventListener('submit', addLangSubmit);
+
+        async function loadScenes(e) {
+            let title = l_input.value;
+            let url = new URL(`/languages/scenes`, window.location.origin);
+            url.searchParams.set('title', title);
+
+            let resp = await fetch(url);
+            let data = (await resp.json())['data'];
+
+            scenes.innerHTML = '';
+
+            for (let scene of data){
+                let el = document.createElement('p');
+                el.textContent = JSON.stringify(scene);
+                scenes.appendChild(el);
+            }
+        }
+
+        l_input.addEventListener('change', loadScenes);
+
+        load_languages();
+    </script>
+{% endblock %}

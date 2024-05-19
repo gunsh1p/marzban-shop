@@ -91,7 +91,7 @@
         data = new Array(diffDays).fill(0);
 
         for (let i = 0; i < diffDays; i++){
-            for (stat of stats) {
+            for (let stat of stats) {
                 if (stat['time'] == labels[i]){
                     data[i]++;
                 }
