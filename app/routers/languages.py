@@ -58,6 +58,41 @@ async def get_scenes(title: str = ''):
 
     return JSONResponse(content=content)
 
+@router.put('/update', response_class=JSONResponse)
+async def update_scene(lang_title: str = Form(default = ''), scene_title: str = Form(default = ''), action: str = Form(default = ''), text: str = Form(default='')):
+    if len(lang_title) == 0 or len(scene_title) == 0 or len(action) == 0 or len(text) == 0:
+        content = {
+            'error': 'Invalid data!'
+        }
+        return JSONResponse(
+            content=content,
+            status_code=400
+        )
+    language = await Language.get_or_none(title=lang_title)
+    if language is None:
+        content = {
+            'error': 'Invalid language!'
+        }
+        return JSONResponse(
+            content=content,
+            status_code=400
+        )
+    scene = await Scene.get_or_none(title=scene_title, action=action)
+    if scene is None:
+        content = {
+            'error': 'Invalid scene!'
+        }
+        return JSONResponse(
+            content=content,
+            status_code=400
+        )
+    scene.text = text
+    await scene.save()
+    content = {
+        'data': await scene.to_dict()
+    }
+    return JSONResponse(content=content)
+
 
 def register_router(app: FastAPI) -> None:
     app.include_router(router)

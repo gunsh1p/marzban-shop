@@ -73,11 +73,13 @@
             let text = document.createElement('textarea');
             text.setAttribute('readonly', true);
             text.setAttribute('rows', 1);
+            text.setAttribute('cols', 1000);
             text.setAttribute('id', 'actionText');
             text.setAttribute('scene', data['title']);
             text.setAttribute('action', data['action']);
             text.setAttribute('aria-label', 'With textarea');
             text.style.resize = 'none';
+            text.style.display = 'block';
             text.classList.add('form-control');
             text.textContent = data['text'];
             d.appendChild(text);
@@ -88,18 +90,34 @@
         }
 
         async function dbClickText(e) {
-            if (e.target.getAttribute('edit') == '1'){
-                e.target.setAttribute('edit', '0');
-                return;
-            }
+            let elem = e.target;
+            let isReadonly = !elem.getAttribute('readonly');
+            let resize = elem.style.resize == 'none' ? 'vertical' : 'none';
+            isReadonly ? elem.setAttribute('readonly', true) : elem.removeAttribute('readonly');
+            elem.style.resize = resize;
 
+            if (!isReadonly) return;
+            let url = new URL(`/languages/update`, window.location.origin);
+
+            let form = new FormData();
+            form.append('lang_title', l_input.value);
+            form.append('scene_title', elem.getAttribute('scene'));
+            form.append('action', elem.getAttribute('action'));
+            form.append('text', elem.value);
+
+            const formData = new URLSearchParams(form);
+
+            await fetch(url, {
+                method: 'PUT',
+                body: formData
+            });
         }
 
-        function bindTextEdit(){
+        async function bindTextEdit(){
             let actionTextElems = document.querySelectorAll('#actionText');
 
             for (let elem of actionTextElems) {
-                elem.addEventListener('double', )
+                elem.addEventListener('dblclick', dbClickText);
             }
         }
 
@@ -116,6 +134,8 @@
             for (let scene of data){
                 scenes.appendChild(createSceneElem(scene));
             }
+
+            bindTextEdit();
         }
 
         async function load_languages() {
