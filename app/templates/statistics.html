@@ -52,7 +52,6 @@
 
     function set_todays_dates(){
         let end_date = new Date();
-        end_date.setTime(end_date.getTime());
         let offset = 6 * 24 * 3600 * 1000;
         let start_date = new Date();
         start_date.setTime(end_date.getTime() - offset);

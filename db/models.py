@@ -103,3 +103,8 @@ class Admin(Model):
     
     def __str__(self) -> str:
         return f'{self.id}. {self.username} (admin)'
+
+class Language(Model):
+    id = fields.IntField(pk=True)
+    title = fields.CharField(max_length=64, unique=True)
+    code = fields.CharField(max_length=5, unique=True)
