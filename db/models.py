@@ -35,10 +35,11 @@ class Online(Model):
     user = fields.ForeignKeyField('default.User')
     time = fields.DatetimeField(auto_now_add=True)
     
-    def to_dict(self) -> dict:
+    async def to_dict(self) -> dict:
+        user = await self.user
         date = self.time.strftime('%d-%m-%Y')
         content = {
-            "id": self.id,
+            "id": user,
             "user": self.user,
             "time": date
         }
@@ -50,7 +51,7 @@ class Referral(Model):
     referrer = fields.OneToOneField('default.User', related_name='referrer')
 
     def __str__(self):
-        return f'{self.id}. {self.referrer.username} (referrer)'
+        return f'{self.id}. {self.referrer.tid} (referrer)'
 
 class TestSubscription(Model):
     id = fields.IntField(pk=True)
@@ -85,9 +86,9 @@ class Buy(Model):
     tariff = fields.ForeignKeyField('default.Tariff', on_delete=fields.CASCADE, null=True)
     time = fields.DatetimeField(auto_now_add=True)
 
-    def to_dict(self) -> dict:
-        user = self.user.id if not isinstance(self.user, _NoneAwaitable) else None
-        tariff = self.tariff.id if not isinstance(self.tariff, _NoneAwaitable) else None
+    async def to_dict(self) -> dict:
+        user: User | None = await self.user
+        tariff: Tariff | None = await self.tariff
         date = self.time.strftime('%d-%m-%Y')
         content = {
             "id": self.id,
@@ -129,7 +130,7 @@ class Scene(Model):
     text = fields.TextField()
 
     async def to_dict(self) -> dict:
-        lang: Language = await self.language.all()
+        lang: Language = await self.language
         content = {
             'id': self.id,
             'language': lang.code,

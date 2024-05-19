@@ -17,11 +17,18 @@
             <button type="submit" class="btn btn-outline-primary mb-3" id="addLanguage">Add language</button>
         </div>
     </form>
-    <div class="text-center">
+    <div class="text-center mb-3">
         <input class="form-control" list="datalistOptions" id="languagesDatalist" placeholder="Type to search..." name="title">
         <datalist id="datalistOptions"></datalist>
     </div>
-    <div class="text-center scenes"></div>
+    <ul class="list-group list-group-numbered scenes">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Cras justo odio
+            </div>
+        </li>
+    </ul>
     <script>
         let l_input = document.querySelector('#languagesDatalist');
         let add_scene = null;
@@ -71,6 +78,34 @@
 
         langForm.addEventListener('submit', addLangSubmit);
 
+        function create_scene_elem(data) {
+            let scene = document.createElement('li');
+            scene.classList.add('list-group-item');
+            scene.classList.add('d-flex');
+            scene.classList.add('justify-content-between');
+            scene.classList.add('align-items-start');
+
+            let d = document.createElement('div');
+            d.classList.add('ms-2');
+            d.classList.add('me-auto');
+
+            let scene_and_action = document.createElement('div');
+            scene_and_action.classList.add('fw-bold');
+            scene_and_action.textContent = `${data['title']}, ${data['action']}`;
+            d.appendChild(scene_and_action);
+            
+            let text = document.createElement('p');
+            text.setAttribute('id', 'actionText');
+            text.setAttribute('scene', data['title']);
+            text.setAttribute('action', data['action']);
+            text.textContent = data['text'];
+            d.appendChild(text);
+
+            scene.appendChild(d);
+
+            return scene;
+        }
+
         async function loadScenes(e) {
             let title = l_input.value;
             let url = new URL(`/languages/scenes`, window.location.origin);
@@ -82,9 +117,7 @@
             scenes.innerHTML = '';
 
             for (let scene of data){
-                let el = document.createElement('p');
-                el.textContent = JSON.stringify(scene);
-                scenes.appendChild(el);
+                scenes.appendChild(create_scene_elem(scene));
             }
         }
 

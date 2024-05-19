@@ -33,7 +33,7 @@ async def get_buys(start: str = 0, end: str = 0):
         return response
     buys = await Buy.filter(time__gte=start_date, time__lt=end_date).all()
     content = {
-        "data": [buy.to_dict() for buy in buys]
+        "data": [await buy.to_dict() for buy in buys]
     }
     response = JSONResponse(content=content)
     return response
@@ -55,7 +55,7 @@ async def get_online(start: str = 0, end: str = 0):
         return response
     onlines = await Online.filter(time__gte=start_date, time__lt=end_date).all()
     content = {
-        "data": [online.to_dict() for online in onlines]
+        "data": [await online.to_dict() for online in onlines]
     }
     response = JSONResponse(content=content)
     return response
