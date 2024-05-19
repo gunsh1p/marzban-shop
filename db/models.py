@@ -108,3 +108,10 @@ class Language(Model):
     id = fields.IntField(pk=True)
     title = fields.CharField(max_length=64, unique=True)
     code = fields.CharField(max_length=5, unique=True)
+
+class Scene(Model):
+    id = fields.IntField(pk=True)
+    language = fields.ForeignKeyField('default.Language')
+    title = fields.CharField(max_length=64)
+    action = fields.CharField(max_length=64)
+    text = fields.TextField()
