@@ -1,7 +1,5 @@
 from tortoise.models import Model
 from tortoise import fields
-from tortoise.fields.relational import _NoneAwaitable
-from tortoise.queryset import QuerySet
 
 class User(Model):
     id = fields.IntField(pk=True)
