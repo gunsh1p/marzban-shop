@@ -6,6 +6,7 @@ class Config:
     BOT_TOKEN: str = field(metadata={'json_name': 'BOT_TOKEN'})
     SECRET: str = field(metadata={'json_name': 'SECRET'})
     WEBHOOK_URL: str = field(metadata={'json_name': 'WEBHOOK_URL'})
+    DEFAULT_LANG: str = field(metadata={'json_name': 'DEFAULT_LANG'})
     MAIN_ADMIN: int = field(metadata={'json_name': 'MAIN_ADMIN'})
     WEB_LOGIN: int = field(metadata={'json_name': 'WEB_LOGIN'})
     WEB_PASS: int = field(metadata={'json_name': 'WEB_PASS'})

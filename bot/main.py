@@ -17,6 +17,7 @@ from utils.get_password_hash import get_password_hash
 from handlers.user import (
     start
 )
+from middlewares.language import DetectLanguageMiddleware
 
 bot: Bot = Bot(
     config.BOT_TOKEN,
@@ -59,7 +60,9 @@ async def on_startup(bot: Bot):
     await bot.set_webhook(f"{config.WEBHOOK_URL}/webhook")
 
 def setup_middlewares():
-    ...
+    # Detect Language
+    dp.message.middleware(DetectLanguageMiddleware())
+    dp.callback_query.middleware(DetectLanguageMiddleware())
 
 def setup_handlers():
     start.register_router(dp)
