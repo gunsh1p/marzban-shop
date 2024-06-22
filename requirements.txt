@@ -1,4 +1,4 @@
-aiogram==3.5.0
+aiogram==3.8.0
 tortoise-orm[asyncmy]
 aerich
 requests

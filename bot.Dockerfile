@@ -6,5 +6,6 @@ COPY bot /app
 COPY migrations /app/migrations
 COPY db /app/db
 COPY utils /app/utils
+COPY constants /app/constants
 COPY pyproject.toml /app/pyproject.toml
 ENTRYPOINT ["python", "main.py"]
