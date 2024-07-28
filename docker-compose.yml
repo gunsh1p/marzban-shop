@@ -33,17 +33,3 @@ services:
         volumes:
             - "./goods.json:/app/goods.json"
             - "./locales:/app/locales"
-        depends_on:
-            - db
-    db:
-        image: mariadb:latest
-        restart: always
-        environment:
-            MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS}
-            MARIADB_DATABASE: ${DB_NAME}
-            MARIADB_USER: ${DB_USER}
-            MARIADB_PASSWORD: ${DB_PASS}
-        ports:
-            - 3306:3306
-        volumes:
-            - "./data/db:/var/lib/mysql"
