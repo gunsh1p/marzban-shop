@@ -120,3 +120,14 @@ msgstr ""
 #: bot/keyboards/payments.py:9
 msgid "ЮKassa - {price}rub"
 msgstr ""
+
+#: bot/tasks/notify_renew_subscription.py:19
+msgid ""
+"Hello, {name} 👋🏻  \n"
+"\n"
+"Thank you for using our service ❤️\n️"
+"\n"
+"Your VPN subscription expires at the end of the day tomorrow.\n️"
+"\n"
+"To renew it, just go to the \"Join 🏄🏻  <200d>♂️\" section and make a payment."
+msgstr ""
