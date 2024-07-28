@@ -27,9 +27,7 @@ async def profile(message: Message):
     if user is None:
         await message.answer(_("You haven't the VPN profile. Just buy the subscription to join out family"), reply_markup=get_main_menu_keyboard())
         return
-    await message.answer(_("You can find out more about your subscription by following this <a href=\"{link}\">link</a>").format(
-                        link=glv.config['PANEL_GLOBAL'] + user['subscription_url']), 
-                        reply_markup=get_back_keyboard())
+    await message.answer(_("Subscription page ⬇️"), reply_markup=get_subscription_keyboard(glv.config['PANEL_GLOBAL'] + user['subscription_url']))
 
 @router.message(F.text == __("ℹ️Information"))
 async def information(message: Message):

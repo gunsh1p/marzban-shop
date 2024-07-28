@@ -131,3 +131,7 @@ msgid ""
 "\n"
 "To renew it, just go to the \"Join 🏄🏻  <200d>♂️\" section and make a payment."
 msgstr ""
+
+#: bot/keyboards/subscription.py:11
+msgid "Follow 🔗"
+msgstr ""
