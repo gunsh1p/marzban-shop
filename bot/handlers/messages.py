@@ -5,7 +5,7 @@ from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
 
 from .commands import start
-from keyboards import get_buy_menu_keyboard, get_back_keyboard, get_main_menu_keyboard
+from keyboards import get_buy_menu_keyboard, get_back_keyboard, get_main_menu_keyboard, get_subscription_keyboard
 from db.methods import can_get_test_sub, update_test_subscription_state, get_marzban_profile_db
 from utils import marzban_api
 import glv
