@@ -8,35 +8,35 @@ def get_main_menu_keyboard(lang=None) -> ReplyKeyboardMarkup:
     if lang is None:
         kb = [
             [
-                KeyboardButton(text=_("🛍️Buy")),
+                KeyboardButton(text=_("Join 🏄🏻‍♂️")),
             ],
             [
-                KeyboardButton(text=_("👤Profile")),
-                KeyboardButton(text=_("ℹ️Information"))
+                KeyboardButton(text=_("My subscription 👤")),
+                KeyboardButton(text=_("Frequent questions ℹ️"))
             ],
             [
-                KeyboardButton(text=_("☎️Support"))
+                KeyboardButton(text=_("Support ❤️"))
             ]
         ]
         
         if glv.config['TEST_PERIOD']:
-            kb.insert(0, [KeyboardButton(text=_("⏳️Test subscription")),])
+            kb.insert(0, [KeyboardButton(text=_("5 days free 🆓")),])
         
         return ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
     kb = [
         [
-            KeyboardButton(text=get_i18n_string("🛍️Buy", lang)),
+            KeyboardButton(text=get_i18n_string("Join 🏄🏻‍♂️", lang)),
         ],
         [
-            KeyboardButton(text=get_i18n_string("👤Profile", lang)),
-            KeyboardButton(text=get_i18n_string("ℹ️Information", lang))
+            KeyboardButton(text=get_i18n_string("My subscription 👤", lang)),
+            KeyboardButton(text=get_i18n_string("Frequent questions ℹ️", lang))
         ],
         [
-            KeyboardButton(text=get_i18n_string("☎️Support", lang))
+            KeyboardButton(text=get_i18n_string("Support ❤️", lang))
         ]
     ]
         
     if glv.config['TEST_PERIOD']:
-        kb.insert(0, [KeyboardButton(text=get_i18n_string("⏳️Test subscription", lang)),])
+        kb.insert(0, [KeyboardButton(text=get_i18n_string("5 days free 🆓", lang)),])
 
     return ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)   

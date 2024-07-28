@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-10-22 16:40+0300\n"
-"PO-Revision-Date: 2023-11-19 23:11+0300\n"
+"PO-Revision-Date: 2024-06-23 21:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: en <LL@li.org>\n"
 "Language: en\n"
@@ -17,118 +17,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.12.1\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #: bot/handlers/callbacks.py:27
-msgid ""
-"An invoice has been issued in the amount of {amount} RUB. After payment, wait "
-"until the payment is approved and you receive a confirmation message"
+msgid "To be paid - {amount}₽ ⬇️"
 msgstr ""
 
 #: bot/handlers/callbacks.py:48
-msgid ""
-"An invoice has been issued in the amount of {amount}$. Pay it by {date}. After "
-"payment, wait until the payment is approved and you receive a confirmation "
-"message"
+msgid "To be paid - {amount}$ ⬇️"
 msgstr ""
 
 #: bot/handlers/callbacks.py:59
-msgid "Select a payment method"
+msgid "Select payment method ⬇️"
 msgstr ""
 
-#: bot/handlers/commands.py:27
+#: bot/handlers/commands.py:17
 msgid ""
-"Hello, {name}.\n"
+"Hello, {name} 👋🏻\n"
 "\n"
-"🎉Welcome to {title}\n"
-"\n"
-"⬇️Select an action"
-msgstr ""
-
-#: bot/handlers/messages.py:25
-msgid "Read the <a href=\"{rules}\">rules</a> before buying"
+"Select an action ⬇️"
 msgstr ""
 
 #: bot/handlers/messages.py:29
-msgid "⬇️Tariffs"
+msgid "Choose the appropriate tariff ⬇️"
 msgstr ""
 
 #: bot/handlers/messages.py:38
-msgid "You haven't the VPN profile. Just buy the subscription to join out family"
+msgid ""
+"Your profile is not active at the moment.\n️"
+"\n"
+"You can choose \"5 days free 🆓\" or \"Join 🏄🏻‍♂️\"."
 msgstr ""
 
 #: bot/handlers/messages.py:41
-msgid ""
-"Subscription page ⬇️"
+msgid "Subscription page ⬇️"
 msgstr ""
 
 #: bot/handlers/messages.py:52
-msgid "Follow the <a href=\"{link}\">link</a> for help"
+msgid "Follow the <a href=\"{link}\">link</a> and ask us a question. We are always happy to help 🤗"
 msgstr ""
 
 #: bot/handlers/messages.py:64
-msgid "Sorry but you've already activated test subscription"
+msgid "Your subscription is available in the \"My subscription 👤\" section."
 msgstr ""
 
-#: bot/handlers/messages.py:67
-msgid "Wait, the test subscription is being generated"
-msgstr ""
-
-#: bot/handlers/messages.py:97
-msgid "Here is your test subscription <a href=\"{link}\">link</a>"
-msgstr ""
-
-#: bot/handlers/messages.py:141
+#: bot/handlers/messages.py:52
 msgid ""
-"Thank you for your purchase. For instructions on how to connect, please follow "
-"this <a href=\"{link}\">link</a>"
+"Thank you for choice ❤️\n️"
+"\n"
+"<a href=\"https://t.me/surf_vpn_info\">Subscribe</a> so you don't miss any announcements ✅\n️"
+"\n"
+"Your subscription is purchased and available in \"My subscription 👤\"."
+msgstr ""
+
+#: bot/app/routes.py:44
+msgid ""
+"Thank you for your choice ❤️\n️"
+"\n"
+"<a href=\"https://t.me/surf_vpn_info\">Subscribe</a> so you don't miss any announcements ✅\n️"
+"\n"
+"Your subscription is purchased and available in \"My subscription 👤\"."
 msgstr ""
 
 #: bot/keyboards/back.py:7
-msgid "🔙Back"
+msgid "⏪ Back"
 msgstr ""
 
 #: bot/keyboards/buy_menu.py:11
-msgid "{title} - {price_en}$/{price_ru}rub"
+msgid "{title} - {price_ru}₽"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:11
-msgid "🛍️Buy"
+msgid "Join 🏄🏻‍♂️"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:14
-msgid "👤Profile"
+msgid "My subscription 👤"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:15
-msgid "ℹ️Information"
+msgid "Frequent questions ℹ️"
 msgstr ""
 
 #: bot/keyboards/main_menu.py:18
-msgid "☎️Support"
+msgid "Support ❤️"
+msgstr ""
+
+#: bot/handlers/messages.py:32
+msgid "Follow the <a href=\"{link}\">link</a> 🔗" 
 msgstr ""
 
 #: bot/keyboards/main_menu.py:23
-msgid "⏳️Test subscription"
+msgid "5 days free 🆓"
 msgstr ""
 
 #: bot/keyboards/pay.py:9
-msgid "Pay"
+msgid "Pay 💳"
 msgstr ""
 
-#: bot/keyboards/payments.py:9
-msgid "ЮKassa - {price}rub"
+#: bot/keyboards/payments.py:23
+msgid "YooKassa - {price}₽"
 msgstr ""
 
-#: bot/tasks/notify_renew_subscription.py:19
+#: bot/tasks/notify_expired.py:22
 msgid ""
-"Hello, {name} 👋🏻  \n"
+"Hello, {name} 👋🏻\n"
 "\n"
 "Thank you for using our service ❤️\n️"
 "\n"
 "Your VPN subscription expires at the end of the day tomorrow.\n️"
 "\n"
-"To renew it, just go to the \"Join 🏄🏻  <200d>♂️\" section and make a payment."
+"To renew it, just go to the \"Join 🏄🏻‍♂️\" section and make a payment."
 msgstr ""
 
 #: bot/keyboards/subscription.py:11

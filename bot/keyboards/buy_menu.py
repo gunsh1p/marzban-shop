@@ -8,7 +8,7 @@ def get_buy_menu_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for good in goods.get():
         builder.row(InlineKeyboardButton(
-            text=_("{title} - {price_en}$/{price_ru}rub").format(
+            text=_("{title} - {price_ru}₽").format(
                 title=good['title'],
                 price_en=good['price']['en'],
                 price_ru=good['price']['ru']

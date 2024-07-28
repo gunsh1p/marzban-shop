@@ -4,7 +4,7 @@ from aiogram.utils.i18n import gettext as _
 def get_back_keyboard() -> ReplyKeyboardMarkup:
     kb = [
         [
-            KeyboardButton(text=_("🔙Back")),
+            KeyboardButton(text=_("⏪ Back")),
         ]
     ]
     
