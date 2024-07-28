@@ -69,9 +69,8 @@ msgstr "У вас нет профиля VPN. Просто купите подп�
 
 #: bot/handlers/messages.py:41
 msgid ""
-"You can find out more about your subscription by following this <a href="
-"\"{link}\">link</a>"
-msgstr ""
+"Subscription page ⬇️"
+msgstr "Страница подписки ⬇️"
 "Подробнее о подписке можно узнать, пройдя по этой <a href=\"{link}\">ссылке</a>"
 
 #: bot/handlers/messages.py:52

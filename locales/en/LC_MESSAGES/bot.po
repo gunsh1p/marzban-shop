@@ -59,8 +59,7 @@ msgstr ""
 
 #: bot/handlers/messages.py:41
 msgid ""
-"You can find out more about your subscription by following this <a href="
-"\"{link}\">link</a>"
+"Subscription page ⬇️"
 msgstr ""
 
 #: bot/handlers/messages.py:52
