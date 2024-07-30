@@ -24,7 +24,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
         callback.message.chat.id, 
         callback.from_user.language_code)
     await callback.message.answer(
-        _("An invoice has been issued in the amount of {amount} RUB. After payment, wait until the payment is approved and you receive a confirmation message").format(
+        _("To be paid - {amount}₽ ⬇️").format(
             amount=result['amount']
         ),
         reply_markup=get_pay_keyboard(result['url']))
@@ -45,7 +45,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
     now = datetime.now()
     expire_date = (now + timedelta(minutes=60)).strftime("%d/%m/%Y, %H:%M")
     await callback.message.answer(
-        _("An invoice has been issued in the amount of {amount}$. Pay it by {date}. After payment, wait until the payment is approved and you receive a confirmation message").format(
+        _("To be paid - {amount}$ ⬇️").format(
             amount=result['amount'],
             date=expire_date
         ),
@@ -56,7 +56,7 @@ async def callback_payment_method_select(callback: CallbackQuery):
 async def callback_payment_method_select(callback: CallbackQuery):
     await callback.message.delete()
     good = goods.get(callback.data)
-    await callback.message.answer(text=_("Select a payment method"), reply_markup=get_payment_keyboard(good))
+    await callback.message.answer(text=_("Select payment method ⬇️"), reply_markup=get_payment_keyboard(good))
     await callback.answer()
 
 def register_callbacks(dp: Dispatcher):

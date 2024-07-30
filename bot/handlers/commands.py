@@ -14,7 +14,7 @@ router = Router(name="commands-router")
     Command("start")
 )
 async def start(message: Message):
-    text = _("Hello, {name}.\n\n🎉Welcome to {title}\n\n⬇️Select an action").format(
+    text = _("Hello, {name} 👋🏻\n\nSelect an action ⬇️").format(
         name=message.from_user.first_name,
         title=glv.config.get('SHOP_NAME', 'VPN Shop')
     )
